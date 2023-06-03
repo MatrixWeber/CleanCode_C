@@ -1,0 +1,9 @@
+a_a
+a_b
+1a_c
+b_a
+b_b
+2b_c
+c_a
+c_b
+3c_c

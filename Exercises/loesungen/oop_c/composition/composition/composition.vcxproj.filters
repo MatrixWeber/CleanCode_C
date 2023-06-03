@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="source">
+      <UniqueIdentifier>{506c29ab-b9d3-41b1-8340-9a238d66595b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="test">
+      <UniqueIdentifier>{e49a433d-c714-4772-9d29-7f0e9772a153}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="source\counter.c">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="source\range_checker.c">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="test\tests.c">
+      <Filter>test</Filter>
+    </ClCompile>
+    <ClCompile Include="test\tests_counter.c">
+      <Filter>test</Filter>
+    </ClCompile>
+    <ClCompile Include="test\tests_counter_limit.c">
+      <Filter>test</Filter>
+    </ClCompile>
+    <ClCompile Include="test\tests_range_checker.c">
+      <Filter>test</Filter>
+    </ClCompile>
+    <ClCompile Include="test\test_helpers.c">
+      <Filter>test</Filter>
+    </ClCompile>
+    <ClCompile Include="main.c" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="source\counter.h">
+      <Filter>source</Filter>
+    </ClInclude>
+    <ClInclude Include="source\range_checker.h">
+      <Filter>source</Filter>
+    </ClInclude>
+    <ClInclude Include="test\tests.h">
+      <Filter>test</Filter>
+    </ClInclude>
+    <ClInclude Include="test\test_helpers.h">
+      <Filter>test</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
