@@ -1,0 +1,56 @@
+@startuml
+
+
+
+
+
+/' Objects '/
+
+class Calendar {
+	+Calendar_Init(Calendar*const self, const unsigned int year)
+	-year : Year
+	-{static} maxNumOfMonth : static const unsigned char
+	-{static} day_info : static unsigned char
+	-calculateDays(const Month& month) : unsigned int
+	-calculateDaysForLeapYear(const unsigned int days) : unsigned int
+	+getDaysOfMonth(const Month& month) : unsigned int
+}
+
+
+class Month {
+	+Month_Init(Month*const self, const unsigned int month)
+	+isFebruary() : bool
+	+isInvalidValid() : bool
+	-month : unsigned int
+}
+
+
+class Year {
+	+Year_Init(Year*const self, unsigned int year)
+	-isDividableBy400() : bool
+	-isDividableBy4ButNotBy100() : bool
+	+isLeapYear() : bool
+	-year : unsigned int
+}
+
+
+/' Inheritance relationships '/
+
+
+
+
+/' Aggregation relationships '/
+
+.Calendar .> Month : using
+.Calendar *-- Year
+
+
+
+
+
+
+/' Nested objects '/
+
+
+
+@enduml

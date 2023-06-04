@@ -1,10 +1,17 @@
 add_executable(kiss "")
 target_sources(kiss
-    PRIVATE
+        PRIVATE
         kiss.c
-    PUBLIC
-        "${CMAKE_CURRENT_LIST_DIR}/datehelper.h")
-    
+        calendar.c
+        year.c
+        month.c
+        PUBLIC
+        "${CMAKE_CURRENT_LIST_DIR}/datehelper.h"
+        "${CMAKE_CURRENT_LIST_DIR}/calendar.h"
+        "${CMAKE_CURRENT_LIST_DIR}/year.h"
+        "${CMAKE_CURRENT_LIST_DIR}/month.h"
+)
+
 target_include_directories(kiss
-    PUBLIC
+        PUBLIC
         "${CMAKE_CURRENT_LIST_DIR}")
