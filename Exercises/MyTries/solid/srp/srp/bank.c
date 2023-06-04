@@ -1,10 +1,7 @@
 #include "bank.h"
 #include <stdio.h>
-#include <time.h>
 #include "account.h"
-
-static void Bank_WriteLog(const char* message, double data);
-static void Bank_WriteLog_S(const char* message, const char* info);
+#include "logger.h"
 
 void Bank_Init(Bank* self)
 {
@@ -43,28 +40,9 @@ void Bank_PayInterest(Bank* self)
     if (self->accounts[i] != NULL) {
       const double interest = Account_CalculateInterest(self->accounts[i]);
       Account_Deposit(self->accounts[i], interest);
-      Bank_WriteLog("\nDeposit, balance:",
-                    Account_GetBalance(self->accounts[i]));
+        WriteLog("\nDeposit, balance:",
+                 Account_GetBalance(self->accounts[i]));
     }
   }
-
-  time_t current_time;
-  time(&current_time);
-
-  const char* time_string = ctime(&current_time);
-  Bank_WriteLog_S("\nInterest paid on: ", time_string);
-}
-
-void Bank_WriteLog(const char* message, double data)
-{
-  FILE* file = fopen("logfile.txt", "a");
-  fprintf(file, "%s %f\n", message, data);
-  fclose(file);
-}
-
-static void Bank_WriteLog_S(const char* message, const char* info)
-{
-  FILE* file = fopen("logfile.txt", "a");
-  fprintf(file, "%s %s\n", message, info);
-  fclose(file);
+    WriteLog_WithTimestamp("\nInterest paid on: ");
 }
