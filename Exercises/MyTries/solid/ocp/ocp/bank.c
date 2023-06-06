@@ -3,10 +3,10 @@
 #include "account.h"
 #include "logger.h"
 
-void Bank_Init(Bank* self)
+void Bank_Init(Bank *self)
 {
   for (int i = 0; i < MAX_ACCOUNTS; ++i) {
-    Account_Init(&self->account_objects[i]);
+      Account_Init(&self->account_objects[i]);
   }
 
   for (int i = 0; i < MAX_ACCOUNTS; ++i) {

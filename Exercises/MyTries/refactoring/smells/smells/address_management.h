@@ -14,6 +14,6 @@ void AddressManagement_Init(AddressManagement* self,
                             const int number_of_addresses);
 
 void AddressManagement_ReadAllAddresses(AddressManagement* self);
-void AddressManagement_WriteAllAddresses(AddressManagement* self);
+void AddressManagement_PrintAllAddresses(AddressManagement* self);
 
 #endif  // ADDRESS_MANAGEMENT_H

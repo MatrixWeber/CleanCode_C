@@ -10,7 +10,7 @@ void Address_Init(Address* self)
   self->zip_code = 0;
 }
 
-void Address_Write(Address* self)
+void Address_Show(Address* self)
 {
   printf("Name: %s\n", self->name);
   printf("Street: %s\n", self->street);

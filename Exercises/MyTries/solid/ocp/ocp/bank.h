@@ -10,7 +10,7 @@ typedef struct Bank_ {
   Account* accounts[MAX_ACCOUNTS];
 } Bank;
 
-void Bank_Init(Bank* self);
+void Bank_Init(Bank *self);
 Account* Bank_CreateAccount(Bank* self);
 
 void Bank_PayInterest(Bank* self);

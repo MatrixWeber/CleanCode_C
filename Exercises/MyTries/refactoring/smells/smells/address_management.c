@@ -2,9 +2,6 @@
 #include <stdio.h>
 #include "address.h"
 
-static void ShowAddress(const char* name, const char* street, const char* city,
-                        const int zip_code);
-
 void AddressManagement_Init(AddressManagement* self,
                             const int number_of_addresses)
 {
@@ -16,10 +13,7 @@ void AddressManagement_Init(AddressManagement* self,
   }
 
   for (int i = 0; i < self->number_of_addresses; ++i) {
-    self->addresses[i].city[0] = '\0';
-    self->addresses[i].name[0] = '\0';
-    self->addresses[i].street[0] = '\0';
-    self->addresses[i].zip_code = 0;
+      Address_Init(&self->addresses[i]);
   }
 }
 
@@ -31,18 +25,9 @@ void AddressManagement_ReadAllAddresses(AddressManagement* self)
   }
 }
 
-void AddressManagement_WriteAllAddresses(AddressManagement* self)
+void AddressManagement_PrintAllAddresses(AddressManagement* self)
 {
   for (int i = 0; i < self->number_of_addresses; ++i) {
-    ShowAddress(self->addresses[i].name, self->addresses[i].street,
-                self->addresses[i].city, self->addresses[i].zip_code);
+      Address_Show(&self->addresses[i]);
   }
-}
-
-void ShowAddress(const char* name, const char* street, const char* city,
-                 const int zip_code)
-{
-  printf("Name: %s\n", name);
-  printf("Street: %s\n", street);
-  printf("City: %d %s\n\n", zip_code, city);
 }

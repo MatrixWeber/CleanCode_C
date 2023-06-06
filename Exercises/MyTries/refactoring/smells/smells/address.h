@@ -11,6 +11,7 @@ typedef struct Address_ {
 } Address;
 
 void Address_Init(Address* self);
+void Address_Show(Address* self);
 void Address_Write(Address* self);
 void Address_Read(Address* self);
 

@@ -31,7 +31,7 @@ int main()
   AddressManagement_ReadAllAddresses(&address_management);
   printf("\n");
 
-  AddressManagement_WriteAllAddresses(&address_management);
+    AddressManagement_PrintAllAddresses(&address_management);
 
   return 0;
 }
