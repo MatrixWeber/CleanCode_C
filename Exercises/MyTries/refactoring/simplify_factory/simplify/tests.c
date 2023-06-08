@@ -1,87 +1,95 @@
-#include <math.h>
 #include "tests.h"
 #include "../../test_framework/test_functions.h"
 #include "calculator.h"
-#include "plus_operation.h"
-#include "minus_operation.h"
-#include "multiply_operation.h"
-#include "divide_operation_proxy.h"
+#include "operation_factory.h"
 
 TEST(TestCalculatorAddition) {
+    OperationFactory factory;
+    OperationFactory_Init(&factory);
     Calculator calc;
-    Calculator_Init(&calc);
-    PlusOperation operation;
-    PlusOperation_Init(&operation);
+    Calculator_Init(&calc, &factory.factoryable);
 
     const double first_value = 2.1;
     const double second_value = 4.2;
-    ASSERT(Calculator_Calculate(&calc, &operation.operationable, first_value, second_value) ==
+    ASSERT(Calculator_Calculate(&calc, '+', first_value, second_value) ==
            first_value + second_value,
            "Addition failed");
 }
 
 TEST(TestCalculatorSubtraction) {
+    OperationFactory factory;
+    OperationFactory_Init(&factory);
     Calculator calc;
-    Calculator_Init(&calc);
-    MinusOperation operation;
-    MinusOperation_Init(&operation);
+    Calculator_Init(&calc, &factory.factoryable);
     const double first_value = 2.1;
     const double second_value = 4.2;
-    ASSERT(Calculator_Calculate(&calc, &operation.operationable, first_value, second_value) ==
+    ASSERT(Calculator_Calculate(&calc, '-', first_value, second_value) ==
            first_value - second_value,
            "Subtraction failed");
 }
 
 TEST(TestCalculatorMultiply) {
+    OperationFactory factory;
+    OperationFactory_Init(&factory);
     Calculator calc;
-    Calculator_Init(&calc);
-    MultiplyOperation operation;
-    MultiplyOperation_Init(&operation);
+    Calculator_Init(&calc, &factory.factoryable);
     const double first_value = 2.1;
     const double second_value = 4.2;
-    ASSERT(Calculator_Calculate(&calc, &operation.operationable, first_value, second_value) ==
+    ASSERT(Calculator_Calculate(&calc, '*', first_value, second_value) ==
            first_value * second_value,
            "Multiply failed");
 }
 
 TEST(TestCalculatorDivision) {
+    OperationFactory factory;
+    OperationFactory_Init(&factory);
     Calculator calc;
-    Calculator_Init(&calc);
-    DivideOperationProxy operation;
-    DivideOperationProxy_Init(&operation);
+    Calculator_Init(&calc, &factory.factoryable);
     const double first_value = 2.1;
     const double second_value = 4.2;
-    ASSERT(Calculator_Calculate(&calc, &operation.operationable, first_value, second_value) ==
+    ASSERT(Calculator_Calculate(&calc, '/', first_value, second_value) ==
            first_value / second_value,
            "Division failed");
 }
 
 TEST(TestCalculatorLastOperationValid) {
     const char operation = '/';
+    OperationFactory factory;
+    OperationFactory_Init(&factory);
     Calculator calc;
-    Calculator_Init(&calc);
-
-    DivideOperationProxy divide_operation;
-    DivideOperationProxy_Init(&divide_operation);
+    Calculator_Init(&calc, &factory.factoryable);
     const double first_value = 2.1;
     const double second_value = 4.2;
-    Calculator_Calculate(&calc, &divide_operation.operationable, first_value, second_value);
+    Calculator_Calculate(&calc, '/', first_value, second_value);
 
     ASSERT(Calculator_GetLastOperation(&calc) == operation,
            "GetLastOperation failed");
 }
 
 TEST(TestCalculatorDivisionByZero) {
+    OperationFactory factory;
+    OperationFactory_Init(&factory);
     Calculator calc;
-    Calculator_Init(&calc);
-    DivideOperationProxy divide_operation;
-    DivideOperationProxy_Init(&divide_operation);
+    Calculator_Init(&calc, &factory.factoryable);
     const double first_value = 2.1;
     const double second_value = 0;
 
-    ASSERT(Calculator_Calculate(&calc, &divide_operation.operationable, first_value, second_value) ==
+    ASSERT(Calculator_Calculate(&calc, '/', first_value, second_value) ==
            0,
            "Division by zero failed");
+}
+
+TEST(TestCalculatorInvalidOperation) {
+    OperationFactory factory;
+    OperationFactory_Init(&factory);
+    Calculator calc;
+    Calculator_Init(&calc, &factory.factoryable);
+    const double first_value = 2.1;
+    const double second_value = 0;
+
+    ASSERT(Calculator_Calculate(&calc, ';', first_value, second_value) ==
+           0,
+           "Invalid Operation failed");
 }
 
 TEST_SUITE(TestAddressManagement) {
@@ -91,6 +99,7 @@ TEST_SUITE(TestAddressManagement) {
     RUN_TEST(TestCalculatorDivision);
     RUN_TEST(TestCalculatorLastOperationValid);
     RUN_TEST(TestCalculatorDivisionByZero);
+    RUN_TEST(TestCalculatorInvalidOperation);
 }
 
 void RunTests() { RUN_TEST_SUITE(TestAddressManagement); }

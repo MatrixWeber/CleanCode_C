@@ -1,0 +1,119 @@
+@startuml
+
+
+interface IOperationFactory {
+	+{abstract} create(const char operation) : IOperationable*
+}
+
+
+interface IOperationable {
+	+{abstract} lastOperation() : char
+	+{abstract} execute(const double leftOperand, const double rightOperand) : double
+}
+
+class OperationFactory {
+    +IFactoryable factory
+	+OperationFactory_Init()
+	+create(const char operation) : IOperationable*
+}
+
+class NullOperation {
+	+lastOperation() : char
+	+execute(const double leftOperand, const double rightOperand) : double
+}
+
+/' Objects '/
+
+class Calculator {
+    +IFactoryable* factory
+	+Calculator_Init(Calculator*const self, IFactoryable* factory)
+	+GetLastOperation() : char
+	+Calculate(const char operation, const double left_operand, const double right_operand) : double
+}
+
+
+class DivideOperation {
+	+DivideOperation_Init(DivideOperation*const self)
+	+operation : IOperationable
+	-this : DivideOperation*
+	-lastOperation() : char
+	-execute(const double leftOperand, const double rightOperand) : double
+    -RegisterThis(DivideOperation* self) : void
+}
+
+
+class DivideOperationProxy {
+	+DivideOperationProxy_Init(DivideOperationProxy*const self)
+	+divide_operation : DivideOperation
+    +operationable : IOperationable
+	-this : DivideOperationProxy*
+	-lastOperation() : char
+	-execute(const double leftOperand, const double rightOperand) : double
+    -RegisterThis(DivideOperationProxy* self) : void
+}
+
+class MinusOperation {
+	+MinusOperation_Init(MinusOperation*const self)
+	+operation : IOperationable
+	-this : MinusOperation*
+	-lastOperation() : char
+	-execute(const double leftOperand, const double rightOperand) : double
+    -RegisterThis(MinusOperation* self) : void
+}
+
+
+class MultiplyOperation {
+	+MultiplyOperation_Init(MultiplyOperation*const self)
+	+operation : IOperationable
+	-this : MultiplyOperation*
+	-lastOperation() : char
+	-execute(const double leftOperand, const double rightOperand) : double
+    -RegisterThis(MultiplyOperation* self) : void
+}
+
+
+class PlusOperation {
+	+PlusOperation_Init(PlusOperation*const self)
+	+operation : IOperationable
+	-this : PlusOperation*
+	-lastOperation() : char
+	-execute(const double leftOperand, const double rightOperand) : double
+    -RegisterThis(PlusOperation* self) : void
+}
+
+
+/' Inheritance relationships '/
+
+IOperationFactory <|-- OperationFactory
+
+
+IOperationable <|-- DivideOperation
+
+
+IOperationable <|-- MinusOperation
+
+
+IOperationable <|-- MultiplyOperation
+
+
+IOperationable <|-- NullOperation
+
+
+IOperationable <|-- PlusOperation
+
+
+
+
+
+/' Aggregation relationships '/
+
+Calculator -> IOperationFactory : uses
+
+
+OperationFactory .> IOperationable : creates
+
+
+
+
+
+@enduml

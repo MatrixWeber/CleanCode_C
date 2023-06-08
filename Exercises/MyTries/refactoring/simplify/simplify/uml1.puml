@@ -1,0 +1,106 @@
+@startuml
+
+
+
+
+
+/' Objects '/
+
+class Calculator {
+	+Calculator_Init(Calculator*const self)
+	+GetLastOperation() : char 
+	+Calculate(IOperationable& operation, const double left_operand, const double right_operand) : double
+}
+
+
+class DivideOperation {
+	+DivideOperation_Init(DivideOperation*const self)
+	+operation : IOperationable
+	-this : DivideOperation*
+	-lastOperation() : char
+	-execute(const double leftOperand, const double rightOperand) : double
+    -RegisterThis(DivideOperation* self) : void
+}
+
+
+class DivideOperationProxy {
+	+DivideOperationProxy_Init(DivideOperationProxy*const self)
+	+divide_operation : DivideOperation
+    +operationable : IOperationable
+	-this : DivideOperationProxy*
+	-lastOperation() : char
+	-execute(const double leftOperand, const double rightOperand) : double
+    -RegisterThis(DivideOperationProxy* self) : void
+}
+
+
+interface IOperationable {
+	lastOperation() : char
+	execute(const double leftOperand, const double rightOperand) : double
+}
+
+
+class MinusOperation {
+	+MinusOperation_Init(MinusOperation*const self)
+	+operation : IOperationable
+	-this : MinusOperation*
+	-lastOperation() : char
+	-execute(const double leftOperand, const double rightOperand) : double
+    -RegisterThis(MinusOperation* self) : void
+}
+
+
+class MultiplyOperation {
+	+MultiplyOperation_Init(MultiplyOperation*const self)
+	+operation : IOperationable
+	-this : MultiplyOperation*
+	-lastOperation() : char
+	-execute(const double leftOperand, const double rightOperand) : double
+    -RegisterThis(MultiplyOperation* self) : void
+}
+
+
+class PlusOperation {
+	+PlusOperation_Init(PlusOperation*const self)
+	+operation : IOperationable
+	-this : PlusOperation*
+	-lastOperation() : char
+	-execute(const double leftOperand, const double rightOperand) : double
+    -RegisterThis(PlusOperation* self) : void
+}
+
+
+
+
+
+/' Inheritance relationships '/
+
+IOperationable <|-- DivideOperation
+
+
+IOperationable <|-- DivideOperationProxy
+
+
+IOperationable <|-- MinusOperation
+
+
+IOperationable <|-- MultiplyOperation
+
+
+IOperationable <|-- PlusOperation
+
+Calculator --> IOperationable : uses
+
+
+
+
+
+/' Aggregation relationships '/
+
+DivideOperationProxy *-- DivideOperation
+
+
+
+
+
+@enduml
