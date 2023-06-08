@@ -1,48 +1,48 @@
 #include "address.h"
-#include <stdbool.h>
+#include "console.h"
 #include <stdio.h>
+#include <string.h>
 
-void Address_Init(Address* self)
-{
-  self->city[0] = '\0';
-  self->name[0] = '\0';
-  self->street[0] = '\0';
-  self->zip_code = 0;
+static void Address_ReadString(const char *const name, char *dest_string) {
+    Print(name);
+    const char *string = ReadString();
+    strcpy(dest_string, string);
 }
 
-void Address_Show(Address* self)
-{
-  printf("Name: %s\n", self->name);
-  printf("Street: %s\n", self->street);
-  printf("City: %d %s\n", self->zip_code, self->city);
+static void Address_ReadNumber(const char *const name, int *const number) { *number = ReadNumber("zip code"); }
+
+static void Address_PrintString(const char *const name, const char *const string) {
+    char tmp[MAX_TEXT_SIZE];
+    sprintf_s(tmp, MAX_TEXT_SIZE, "%s: %s\n", name, string);
+    Print(tmp);
 }
 
-void Address_Read(Address* self)
-{
-  printf("Please enter the name: ");
-  scanf("%s", self->name);
+static void Address_PrintCity(const Address *const self) {
+    char tmp[MAX_TEXT_SIZE];
+    sprintf_s(tmp, MAX_TEXT_SIZE, "City: %d %s\n", self->zip_code, self->city);
+    Print(tmp);
+}
 
-  printf("Please enter the street: ");
-  scanf("%s", self->street);
+void Address_Init(Address *const self) {
+    self->city[0] = '\0';
+    self->name[0] = '\0';
+    self->street[0] = '\0';
+    self->zip_code = 0;
+}
 
-  while (true) {
-    printf("Please enter the zip code: ");
+void Address_Show(Address *const self) {
+    Address_PrintString("Name", self->name);
+    Address_PrintString("Street", self->street);
+    Address_PrintCity(self);
+    Print("\n");
+}
 
-    const int items = scanf("%d", &self->zip_code);
+void Address_Read(Address *const self) {
+    Address_ReadString("Please enter the name: ", self->name);
 
-    if (items > 0) {
-      break;
-    }
+    Address_ReadString("Please enter the street: ", self->street);
+    Address_ReadNumber("zip code", &self->zip_code);
 
-    printf("Please enter a number\n");
-    char temp;
-    while ((temp = fgetc(stdin)) != EOF) {
-      if (temp == '\n') {
-        break;
-      }
-    }
-  }
-
-  printf("Please enter the city: ");
-  scanf("%s", self->city);
+    Address_ReadString("Please enter the city: ", self->city);
+    Print("\n");
 }

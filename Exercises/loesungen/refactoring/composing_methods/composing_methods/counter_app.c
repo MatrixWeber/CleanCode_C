@@ -15,7 +15,7 @@ void InitCounters(Counter counters[], const int number, const int initial_value)
 void ShowCounters(Counter counters[], const int number, FILE* file,
                   const char* message)
 {
-  fprintf(file, message);
+  fprintf(file, "%s", message);
   for (int i = 0; i < number; i++) {
     fprintf(file, "%d\n", Counter_GetValue(&counters[i]));
   }

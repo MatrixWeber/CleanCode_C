@@ -4,15 +4,14 @@
 #define MAX_TEXT_SIZE 256
 
 typedef struct Address_ {
-  char name[MAX_TEXT_SIZE];
-  char street[MAX_TEXT_SIZE];
-  char city[MAX_TEXT_SIZE];
-  int zip_code;
+    char name[MAX_TEXT_SIZE];
+    char street[MAX_TEXT_SIZE];
+    char city[MAX_TEXT_SIZE];
+    int zip_code;
 } Address;
 
-void Address_Init(Address* self);
-void Address_Show(Address* self);
-void Address_Write(Address* self);
-void Address_Read(Address* self);
+void Address_Init(Address *const self);
+void Address_Show(Address *const self);
+void Address_Read(Address *const self);
 
 #endif  // ADDRESS_H
