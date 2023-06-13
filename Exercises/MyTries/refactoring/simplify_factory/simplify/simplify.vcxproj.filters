@@ -24,12 +24,54 @@
     <ClCompile Include="tests.c">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="divide_operation.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="minus_operation.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="multiply_operation.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="null_operation.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="operation_factory.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="plus_operation.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="calculator.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="tests.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="divide_operation.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="i_factoryable.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="i_operationable.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="minus_operation.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="multiply_operation.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="null_operation.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="operation_factory.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="plus_operation.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

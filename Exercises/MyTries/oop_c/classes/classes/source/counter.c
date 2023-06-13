@@ -1,10 +1,18 @@
 // Copyright 2018 MicroConsult GmbH
 #include "source/counter.h"
 
-void Counter_Init(Counter *const self) { Counter_Reset(self); }
+static Counter* this;
 
-void Counter_Count(Counter *const self, const int amount) { self->value += amount; }
+static void count(const int amount) { this->value += amount; }
 
-int Counter_GetValue(Counter *const self) { return self->value; }
+static int getValue() { return this->value; }
 
-void Counter_Reset(Counter *const self) { self->value = 0; }
+static void reset() { this->value = 0; }
+
+void Counter_Init(Counter *const self) {
+    this = self;
+    this->reset = reset;
+    this->count = count;
+    this->getValue = getValue;
+    this->reset();
+}

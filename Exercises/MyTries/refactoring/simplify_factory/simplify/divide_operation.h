@@ -11,7 +11,6 @@ typedef struct DivideOperation DivideOperation;
 
 struct DivideOperation
 {
-    void (*RegisterThis)(DivideOperation*const);
     IOperationable operationable;
 };
 

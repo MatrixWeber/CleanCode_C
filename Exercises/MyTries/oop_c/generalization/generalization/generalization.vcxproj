@@ -14,18 +14,18 @@
     <VCProjectVersion>15.0</VCProjectVersion>
     <ProjectGuid>{45797728-463F-4D22-9E27-5333639BA466}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
-    <WindowsTargetPlatformVersion>10.0.17763.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v141</PlatformToolset>
+    <PlatformToolset>v142</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
-    <PlatformToolset>v141</PlatformToolset>
+    <PlatformToolset>v142</PlatformToolset>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
   <ImportGroup Label="ExtensionSettings">
@@ -78,7 +78,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="main.c" />
-    <ClCompile Include="source\base.c" />
+    <ClCompile Include="source\counter.c" />
     <ClCompile Include="source\down_counter.c" />
     <ClCompile Include="source\range_checker.c" />
     <ClCompile Include="source\up_counter.c" />
@@ -91,7 +91,7 @@
     <ClCompile Include="test\test_helpers.c" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="source\base.h" />
+    <ClInclude Include="source\counter.h" />
     <ClInclude Include="source\down_counter.h" />
     <ClInclude Include="source\range_checker.h" />
     <ClInclude Include="source\up_counter.h" />

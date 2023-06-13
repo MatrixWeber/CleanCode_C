@@ -11,7 +11,6 @@ typedef struct MultiplyOperation MultiplyOperation;
 
 struct MultiplyOperation
 {
-    void (*RegisterThis)(MultiplyOperation*const);
     IOperationable operationable;
 };
 

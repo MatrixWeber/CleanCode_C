@@ -22,8 +22,7 @@ static double execute(const double left_operand, const double right_operand)
 
 void MinusOperation_Init(MinusOperation*const self)
 {
-    self->RegisterThis = RegisterThis;
-    self->RegisterThis(self);
+    RegisterThis(self);
     self->operationable.execute = execute;
     self->operationable.lastOperation = lastOperation;
 

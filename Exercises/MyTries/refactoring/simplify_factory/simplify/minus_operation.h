@@ -11,7 +11,6 @@ typedef struct MinusOperation MinusOperation;
 
 struct MinusOperation
 {
-    void (*RegisterThis)(MinusOperation*const);
     IOperationable operationable;
 };
 

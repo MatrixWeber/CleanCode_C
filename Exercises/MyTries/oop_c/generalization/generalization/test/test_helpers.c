@@ -4,7 +4,7 @@
 #ifdef ENABLE_TESTS
 
 #include "test/test_helpers.h"
-#include "counter.h"
+#include "source/counter.h"
 
 void CountHelper(Counter* base, const int loops, const int step) {
   for (int i = 0; i < loops; i++) {

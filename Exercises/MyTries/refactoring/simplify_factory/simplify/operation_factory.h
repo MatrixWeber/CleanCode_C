@@ -10,7 +10,6 @@
 typedef struct OperationFactory OperationFactory;
 
 struct OperationFactory{
-    void (*RegisterThis)(OperationFactory*const);
     IFactoryable factoryable;
 };
 

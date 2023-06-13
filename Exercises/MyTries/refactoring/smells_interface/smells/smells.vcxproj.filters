@@ -24,12 +24,39 @@
     <ClCompile Include="main.c">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="application.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="console.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="disk.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="null_object.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="address.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="address_management.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="application.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="console.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="disk.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="i_logable.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="null_object.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

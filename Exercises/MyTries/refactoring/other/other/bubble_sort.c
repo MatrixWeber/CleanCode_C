@@ -1,25 +1,18 @@
+#include <stdlib.h>
 #include "bubble_sort.h"
 
-static void Swap(int *first, int *second)
-{
-  const int temp = *first;
-  *first = *second;
-  *second = temp;
+static int CompareIntegers(const void *a, const void *b) {
+    const int intA = *(const int *) a;
+    const int intB = *(const int *) b;
+
+    if (intA < intB) {
+        return -1;
+    } else if (intA > intB) {
+        return 1;
+    }
+    return 0;
 }
 
-// ToDo: Convert to iteration
-void BubbleSort(int array[], const int size)
-{
-  if (size <= 1) {
-    return;
-  }
-
-  int i = 0;
-  for (i = 0; i < size - 1; i++) {
-    if (array[i + 1] < array[i]) {
-      Swap(&array[i], &array[i + 1]);
-    }
-  }
-
-  BubbleSort(array, size - 1);
+void BubbleSort(int array[], const int size) {
+    qsort(array, size, sizeof(int), CompareIntegers);
 }

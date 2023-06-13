@@ -11,9 +11,7 @@ TEST(TestCalculatorAddition) {
 
     const double first_value = 2.1;
     const double second_value = 4.2;
-    ASSERT(Calculator_Calculate(&calc, '+', first_value, second_value) ==
-           first_value + second_value,
-           "Addition failed");
+    ASSERT(calc.Calculate('+', first_value, second_value) == first_value + second_value, "Addition failed");
 }
 
 TEST(TestCalculatorSubtraction) {
@@ -23,9 +21,7 @@ TEST(TestCalculatorSubtraction) {
     Calculator_Init(&calc, &factory.factoryable);
     const double first_value = 2.1;
     const double second_value = 4.2;
-    ASSERT(Calculator_Calculate(&calc, '-', first_value, second_value) ==
-           first_value - second_value,
-           "Subtraction failed");
+    ASSERT(calc.Calculate('-', first_value, second_value) == first_value - second_value, "Subtraction failed");
 }
 
 TEST(TestCalculatorMultiply) {
@@ -35,9 +31,7 @@ TEST(TestCalculatorMultiply) {
     Calculator_Init(&calc, &factory.factoryable);
     const double first_value = 2.1;
     const double second_value = 4.2;
-    ASSERT(Calculator_Calculate(&calc, '*', first_value, second_value) ==
-           first_value * second_value,
-           "Multiply failed");
+    ASSERT(calc.Calculate('*', first_value, second_value) == first_value * second_value, "Multiply failed");
 }
 
 TEST(TestCalculatorDivision) {
@@ -47,9 +41,7 @@ TEST(TestCalculatorDivision) {
     Calculator_Init(&calc, &factory.factoryable);
     const double first_value = 2.1;
     const double second_value = 4.2;
-    ASSERT(Calculator_Calculate(&calc, '/', first_value, second_value) ==
-           first_value / second_value,
-           "Division failed");
+    ASSERT(calc.Calculate('/', first_value, second_value) == first_value / second_value, "Division failed");
 }
 
 TEST(TestCalculatorLastOperationValid) {
@@ -60,10 +52,9 @@ TEST(TestCalculatorLastOperationValid) {
     Calculator_Init(&calc, &factory.factoryable);
     const double first_value = 2.1;
     const double second_value = 4.2;
-    Calculator_Calculate(&calc, '/', first_value, second_value);
+    calc.Calculate('/', first_value, second_value);
 
-    ASSERT(Calculator_GetLastOperation(&calc) == operation,
-           "GetLastOperation failed");
+    ASSERT(calc.GetLastOperation() == operation, "GetLastOperation failed");
 }
 
 TEST(TestCalculatorDivisionByZero) {
@@ -74,9 +65,7 @@ TEST(TestCalculatorDivisionByZero) {
     const double first_value = 2.1;
     const double second_value = 0;
 
-    ASSERT(Calculator_Calculate(&calc, '/', first_value, second_value) ==
-           0,
-           "Division by zero failed");
+    ASSERT(calc.Calculate('/', first_value, second_value) == 0, "Division by zero failed");
 }
 
 TEST(TestCalculatorInvalidOperation) {
@@ -87,9 +76,7 @@ TEST(TestCalculatorInvalidOperation) {
     const double first_value = 2.1;
     const double second_value = 0;
 
-    ASSERT(Calculator_Calculate(&calc, ';', first_value, second_value) ==
-           0,
-           "Invalid Operation failed");
+    ASSERT(calc.Calculate(';', first_value, second_value) == 0, "Invalid Operation failed");
 }
 
 TEST_SUITE(TestAddressManagement) {

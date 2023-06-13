@@ -8,7 +8,7 @@
 
 void CountHelper(Counter* counter, const int loops, const int step) {
   for (int i = 0; i < loops; i++) {
-    Counter_Count(counter, step);
+      counter->count(step);
   }
 }
 
@@ -18,7 +18,7 @@ TEST(Test_Counter_Init) {
   Counter counter;
   Counter_Init(&counter);
 
-  ASSERT(Counter_GetValue(&counter) == expected,
+  ASSERT(counter.getValue() == expected,
          "Counter initialization failed");
 }
 
@@ -31,7 +31,7 @@ TEST(Test_Counter_Count) {
 
   CountHelper(&counter, expected, step);
 
-  ASSERT_INT(Counter_GetValue(&counter), expected);
+  ASSERT_INT(counter.getValue(), expected);
 }
 
 TEST(Test_Counter_Reset) {
@@ -43,9 +43,9 @@ TEST(Test_Counter_Reset) {
 
   CountHelper(&counter, 42, step);
 
-  Counter_Reset(&counter);
+    counter.reset();
 
-  ASSERT(Counter_GetValue(&counter) == expected, "Counter reset failed");
+  ASSERT(counter.getValue() == expected, "Counter reset failed");
 }
 
 TEST(Test_Multiple_Counter_Count) {
@@ -62,8 +62,8 @@ TEST(Test_Multiple_Counter_Count) {
   CountHelper(&counter1, expected1, step1);
   CountHelper(&counter2, expected2 / step2, step2);
 
-  ASSERT_INT(Counter_GetValue(&counter1), expected1);
-  ASSERT_INT(Counter_GetValue(&counter2), expected2);
+  ASSERT_INT(counter1.getValue(), expected1);
+  ASSERT_INT(counter2.getValue(), expected2);
 }
 
 TEST_SUITE(Test_Counter) {

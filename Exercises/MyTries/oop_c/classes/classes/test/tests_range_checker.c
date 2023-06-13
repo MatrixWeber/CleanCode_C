@@ -14,9 +14,9 @@ TEST(Test_RangeChecker_Init1) {
   RangeChecker checker;
   RangeChecker_Init(&checker, lower_limit, upper_limit);
 
-  ASSERT(lower_limit == RangeChecker_GetLowerLimit(&checker),
+  ASSERT(lower_limit == checker.getLowerLimit(),
          "BoundaryChecker lower limit was not correct initialized");
-  ASSERT(upper_limit == RangeChecker_GetUpperLimit(&checker),
+  ASSERT(upper_limit == checker.getUpperLimit(),
          "BoundaryChecker upper limit was not correct initialized");
 }
 
@@ -27,9 +27,9 @@ TEST(Test_RangeChecker_Init2) {
   RangeChecker checker;
   RangeChecker_Init(&checker, lower_limit, upper_limit);
 
-  ASSERT(lower_limit == RangeChecker_GetLowerLimit(&checker),
+  ASSERT(lower_limit == checker.getLowerLimit(),
          "BoundaryChecker lower limit was not correct initialized");
-  ASSERT(upper_limit == RangeChecker_GetUpperLimit(&checker),
+  ASSERT(upper_limit == checker.getUpperLimit(),
          "BoundaryChecker upper limit was not correct initialized");
 }
 
@@ -41,9 +41,9 @@ TEST(Test_RangeChecker_Init3) {
   RangeChecker_Init(&checker, lower_limit, upper_limit);
 
   // checker should use the defaults
-  ASSERT(RangeChecker_GetLowerLimit(&checker) == 0,
+  ASSERT(checker.getLowerLimit() == 0,
          "BoundaryChecker lower limit was not correct initialized");
-  ASSERT(RangeChecker_GetUpperLimit(&checker) == INT_MAX,
+  ASSERT(checker.getUpperLimit() == INT_MAX,
          "BoundaryChecker upper limit was not correct initialized");
 }
 
@@ -55,7 +55,7 @@ TEST(Test_RangeChecker_Inside1) {
   RangeChecker checker;
   RangeChecker_Init(&checker, lower_limit, upper_limit);
 
-  ASSERT(RangeChecker_IsInside(&checker, test_value),
+  ASSERT(checker.isInside(test_value),
          "Test value is inside the boundary, result should be true");
 }
 
@@ -67,7 +67,7 @@ TEST(Test_RangeChecker_Inside2) {
   RangeChecker checker;
   RangeChecker_Init(&checker, lower_limit, upper_limit);
 
-  ASSERT(RangeChecker_IsInside(&checker, test_value),
+  ASSERT(checker.isInside(test_value),
          "Test value is inside the boundary, result should be true");
 }
 
@@ -79,7 +79,7 @@ TEST(Test_RangeChecker_Inside3) {
   RangeChecker checker;
   RangeChecker_Init(&checker, lower_limit, upper_limit);
 
-  ASSERT(RangeChecker_IsInside(&checker, test_value),
+  ASSERT(checker.isInside(test_value),
          "Test value is inside the boundary, result should be true");
 }
 
@@ -91,7 +91,7 @@ TEST(Test_RangeChecker_Outside1) {
   RangeChecker checker;
   RangeChecker_Init(&checker, lower_limit, upper_limit);
 
-  ASSERT(!RangeChecker_IsInside(&checker, test_value),
+  ASSERT(!checker.isInside(test_value),
          "Test value is outside the boundary, result should be false");
 }
 
@@ -103,7 +103,7 @@ TEST(Test_RangeChecker_Outside2) {
   RangeChecker checker;
   RangeChecker_Init(&checker, lower_limit, upper_limit);
 
-  ASSERT(!RangeChecker_IsInside(&checker, test_value),
+  ASSERT(!checker.isInside(test_value),
          "Test value is outside the boundary, result should be false");
 }
 
@@ -115,7 +115,7 @@ TEST(Test_RangeChecker_Outside3) {
   RangeChecker checker;
   RangeChecker_Init(&checker, lower_limit, upper_limit);
 
-  ASSERT(!RangeChecker_IsInside(&checker, test_value),
+  ASSERT(!checker.isInside(test_value),
          "Test value is outside the boundary, result should be false");
 }
 

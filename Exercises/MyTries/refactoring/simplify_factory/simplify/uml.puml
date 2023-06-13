@@ -26,9 +26,11 @@ class NullOperation {
 
 class Calculator {
     +IFactoryable* factory
+    -this : Calculator*
 	+Calculator_Init(Calculator*const self, IFactoryable* factory)
 	+GetLastOperation() : char
 	+Calculate(const char operation, const double left_operand, const double right_operand) : double
+    -RegisterThis(Calculator* self) : void
 }
 
 
@@ -39,17 +41,6 @@ class DivideOperation {
 	-lastOperation() : char
 	-execute(const double leftOperand, const double rightOperand) : double
     -RegisterThis(DivideOperation* self) : void
-}
-
-
-class DivideOperationProxy {
-	+DivideOperationProxy_Init(DivideOperationProxy*const self)
-	+divide_operation : DivideOperation
-    +operationable : IOperationable
-	-this : DivideOperationProxy*
-	-lastOperation() : char
-	-execute(const double leftOperand, const double rightOperand) : double
-    -RegisterThis(DivideOperationProxy* self) : void
 }
 
 class MinusOperation {

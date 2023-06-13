@@ -2,7 +2,7 @@
 #ifndef TEST_TEST_HELPERS_H_
 #define TEST_TEST_HELPERS_H_
 
-#include "counter.h"
+#include "source/counter.h"
 
 void CountHelper(Counter* counter, const int loops, const int step);
 
