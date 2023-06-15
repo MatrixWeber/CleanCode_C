@@ -4,11 +4,14 @@
 
 typedef struct {
     int value;
+
     void (*count)(const int);
+
     int (*getValue)();
+
     void (*reset)();
 } Counter;
 
- void Counter_Init(Counter *const self);
+void Counter_Init(Counter *const self);
 
 #endif  // SOURCE_COUNTER_H_

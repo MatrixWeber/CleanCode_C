@@ -6,10 +6,10 @@
 #include "source/counter.h"
 #include "test/test_helpers.h"
 
-void CountHelper(Counter* counter, const int loops, const int step) {
-  for (int i = 0; i < loops; i++) {
-    Counter_Count(counter, step);
-  }
+void CountHelper(Counter *const counter, const int loops, const int step) {
+    for (int i = 0; i < loops; i++) {
+        counter->count(step);
+    }
 }
 
 #endif

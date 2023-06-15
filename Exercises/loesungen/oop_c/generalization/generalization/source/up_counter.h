@@ -4,12 +4,13 @@
 
 #include "source/counter.h"
 
-typedef struct _UpCounter {
-  Counter base;
+typedef struct {
+    Counter base;
+
+    void (*count)();
+
 } UpCounter;
 
-void UpCounter_Init(UpCounter* self, int lower_limit, int upper_limit);
-
-void UpCounter_Count(UpCounter* self);
+void UpCounter_Init(UpCounter *const self, const int lower_limit, const int upper_limit);
 
 #endif  // SOURCE_UP_COUNTER_H_

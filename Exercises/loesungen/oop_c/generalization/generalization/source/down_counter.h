@@ -4,12 +4,13 @@
 
 #include "source/counter.h"
 
-typedef struct _DownCounter {
-  Counter base;
+typedef struct {
+    Counter base;
+
+    void (*count)();
 } DownCounter;
 
-void DownCounter_Init(DownCounter* self, int lower_limit, int upper_limit);
+void DownCounter_Init(DownCounter *self, int lower_limit, int upper_limit);
 
-void DownCounter_Count(DownCounter* self);
 
 #endif  // SOURCE_DOWN_COUNTER_H_

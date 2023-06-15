@@ -5,11 +5,12 @@
 #ifdef ENABLE_TESTS
 
 TEST_SUITE(Test_Counter);
+
 TEST_SUITE(Test_RangeChecker);
 
 void RunTests() {
-  RUN_TEST_SUITE(Test_Counter);
-  RUN_TEST_SUITE(Test_RangeChecker);
+    RUN_TEST_SUITE(Test_Counter);
+    RUN_TEST_SUITE(Test_RangeChecker);
 }
 
 #else

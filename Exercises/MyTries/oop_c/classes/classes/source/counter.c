@@ -1,7 +1,7 @@
 // Copyright 2018 MicroConsult GmbH
 #include "source/counter.h"
 
-static Counter* this;
+static Counter *this;
 
 static void count(const int amount) { this->value += amount; }
 

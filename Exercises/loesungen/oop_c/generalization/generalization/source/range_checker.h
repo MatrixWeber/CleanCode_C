@@ -3,14 +3,16 @@
 #define SOURCE_RANGE_CHECKER_H_
 
 typedef struct _RangeChecker {
-  int lower_limit;
-  int upper_limit;
+    int lower_limit;
+    int upper_limit;
+
+    int (*isInside)(const int);
+
+    int (*getLowerLimit)();
+
+    int (*getUpperLimit)();
 } RangeChecker;
 
-void RangeChecker_Init(RangeChecker* self, int lower_limit, int upper_limit);
-
-int RangeChecker_IsInside(RangeChecker* self, int value);
-int RangeChecker_GetLowerLimit(RangeChecker* self);
-int RangeChecker_GetUpperLimit(RangeChecker* self);
+void RangeChecker_Init(RangeChecker *const self, const int lower_limit, const int upper_limit);
 
 #endif  // SOURCE_RANGE_CHECKER_H_

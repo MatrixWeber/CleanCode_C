@@ -3,7 +3,7 @@
 #include <stdbool.h>
 #include "source/range_checker.h"
 
-static RangeChecker* this;
+static RangeChecker *this;
 
 static bool areInputsValid(const int lower_limit, const int upper_limit) {
     if (lower_limit >= upper_limit) {
@@ -12,7 +12,7 @@ static bool areInputsValid(const int lower_limit, const int upper_limit) {
     return true;
 }
 
-static void reinitialize() {
+static void initializeDefault() {
     this->lower_limit = 0;
     this->upper_limit = INT_MAX;
 }
@@ -32,7 +32,7 @@ static int getUpperLimit() {
     return this->upper_limit;
 }
 
-static void initializeSelf(RangeChecker *const self) {
+static void initializeThis(RangeChecker *const self) {
     this = self;
     this->isInside = isInside;
     this->getLowerLimit = getLowerLimit;
@@ -40,11 +40,11 @@ static void initializeSelf(RangeChecker *const self) {
 }
 
 void RangeChecker_Init(RangeChecker *const self, const int lower_limit, const int upper_limit) {
-    initializeSelf(self);
+    initializeThis(self);
     if (areInputsValid(lower_limit, upper_limit)) {
         this->lower_limit = lower_limit;
         this->upper_limit = upper_limit;
     } else {
-        reinitialize();
+        initializeDefault();
     }
 }

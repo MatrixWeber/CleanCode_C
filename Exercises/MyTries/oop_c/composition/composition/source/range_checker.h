@@ -5,12 +5,14 @@
 typedef struct _RangeChecker {
     int lower_limit;
     int upper_limit;
+
+    int (*isInside)(const int);
+
+    int (*getLowerLimit)();
+
+    int (*getUpperLimit)();
 } RangeChecker;
 
 void RangeChecker_Init(RangeChecker *const self, const int lower_limit, const int upper_limit);
-
-int RangeChecker_IsInside(RangeChecker *const self, const int value);
-int RangeChecker_GetLowerLimit(RangeChecker *const self);
-int RangeChecker_GetUpperLimit(RangeChecker *const self);
 
 #endif  // SOURCE_RANGE_CHECKER_H_

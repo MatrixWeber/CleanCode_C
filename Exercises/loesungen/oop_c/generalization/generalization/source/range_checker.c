@@ -1,21 +1,50 @@
 // Copyright 2018 MicroConsult GmbH
-#include "source/range_checker.h"
 #include <limits.h>
+#include <stdbool.h>
+#include "source/range_checker.h"
 
-void RangeChecker_Init(RangeChecker* self, int lower_limit, int upper_limit) {
-  if (lower_limit >= upper_limit) {
-    self->lower_limit = 0;
-    self->upper_limit = INT_MAX;
-  } else {
-    self->lower_limit = lower_limit;
-    self->upper_limit = upper_limit;
-  }
+static RangeChecker *this;
+
+static bool areInputsValid(const int lower_limit, const int upper_limit) {
+    if (lower_limit >= upper_limit) {
+        return false;
+    }
+    return true;
 }
 
-int RangeChecker_IsInside(RangeChecker* self, int value) {
-  return (value >= self->lower_limit) && (value <= self->upper_limit);
+static void initDefault() {
+    this->lower_limit = 0;
+    this->upper_limit = INT_MAX;
 }
 
-int RangeChecker_GetLowerLimit(RangeChecker* self) { return self->lower_limit; }
+static int isInside(const int value) {
+    if (this->lower_limit <= value && this->upper_limit >= value) {
+        return 1;
+    }
+    return 0;
+}
 
-int RangeChecker_GetUpperLimit(RangeChecker* self) { return self->upper_limit; }
+static int getLowerLimit() {
+    return this->lower_limit;
+}
+
+static int getUpperLimit() {
+    return this->upper_limit;
+}
+
+static void initThis(RangeChecker *const self) {
+    this = self;
+    this->getUpperLimit = getUpperLimit;
+    this->getLowerLimit = getLowerLimit;
+    this->isInside = isInside;
+}
+
+void RangeChecker_Init(RangeChecker *const self, const int lower_limit, const int upper_limit) {
+    initThis(self);
+    if (areInputsValid(lower_limit, upper_limit)) {
+        self->lower_limit = lower_limit;
+        self->upper_limit = upper_limit;
+    } else {
+        initDefault();
+    }
+}

@@ -7,9 +7,10 @@ typedef struct {
     int upper_limit;
 
     int (*isInside)(const int);
-    int (*getLowerLimit)();
-    int (*getUpperLimit)();
 
+    int (*getLowerLimit)();
+
+    int (*getUpperLimit)();
 } RangeChecker;
 
 void RangeChecker_Init(RangeChecker *const self, const int lower_limit, const int upper_limit);

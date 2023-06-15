@@ -2,18 +2,23 @@
 #ifndef SOURCE_COUNTER_H_
 #define SOURCE_COUNTER_H_
 
-#include "source/range_checker.h"
+#include "range_checker.h"
 
-typedef struct _Counter {
-  int value;
-  RangeChecker checker;
+typedef struct {
+    int value;
+
+    void (*count)(const int);
+
+    int (*getValue)();
+
+    void (*reset)();
+
+    void (*initLimits)(const int lower_limit, const int upper_limit);
+
+    RangeChecker checker;
 } Counter;
 
-void Counter_Init(Counter* self);
-void Counter_InitLimits(Counter* self, int lower_limit, int upper_limit);
+void Counter_Init(Counter *const self);
 
-void Counter_Count(Counter* self, int amount);
-int Counter_GetValue(const Counter* self);
-void Counter_Reset(Counter* self);
 
 #endif  // SOURCE_COUNTER_H_

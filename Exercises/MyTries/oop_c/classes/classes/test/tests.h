@@ -2,7 +2,7 @@
 #ifndef TEST_TESTS_H_
 #define TEST_TESTS_H_
 
- #define ENABLE_TESTS
+#define ENABLE_TESTS
 
 void RunTests();
 
