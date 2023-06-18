@@ -10,8 +10,6 @@
 typedef struct Year Year;
 
 struct Year {
-    void (*_this)(Year *const);
-
     unsigned int year;
 
     bool (*isLeapYear)();

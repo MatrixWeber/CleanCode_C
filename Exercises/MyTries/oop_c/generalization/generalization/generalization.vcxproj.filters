@@ -9,6 +9,9 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="source\counter.c">
+      <Filter>source</Filter>
+    </ClCompile>
     <ClCompile Include="source\down_counter.c">
       <Filter>source</Filter>
     </ClCompile>
@@ -40,11 +43,11 @@
       <Filter>test</Filter>
     </ClCompile>
     <ClCompile Include="main.c" />
-    <ClCompile Include="source\counter.c">
-      <Filter>source</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="source\counter.h">
+      <Filter>source</Filter>
+    </ClInclude>
     <ClInclude Include="source\down_counter.h">
       <Filter>source</Filter>
     </ClInclude>
@@ -59,9 +62,6 @@
     </ClInclude>
     <ClInclude Include="test\test_helpers.h">
       <Filter>test</Filter>
-    </ClInclude>
-    <ClInclude Include="source\counter.h">
-      <Filter>source</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

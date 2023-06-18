@@ -10,8 +10,6 @@
 typedef struct Month Month;
 
 struct Month {
-    void (*_this)(Month *const);
-
     unsigned int month;
 
     bool (*isInvalid)();

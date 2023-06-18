@@ -11,8 +11,6 @@
 typedef struct Calendar Calendar;
 
 struct Calendar {
-    void (*_this)(Calendar *const);
-
     Year *year;
 
     unsigned int (*getDaysOfMonth)(Month *const);

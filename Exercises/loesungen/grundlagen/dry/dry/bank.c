@@ -1,22 +1,21 @@
 #include "bank.h"
+
 #include <stddef.h>
 #include <stdio.h>
+
 #include "account.h"
 #include "tools.h"
 
 #define MAX_STRING_SIZE 256
 
 // private function declarations ...
-void Bank_ReportInformationRaw(FILE* file, const char* text,
-                               const int account_id);
-void Bank_ReportToFile(const char* text, const char* file_name,
-                       const int account_id);
+void Bank_ReportInformationRaw(FILE* file, const char* text, const int account_id);
+void Bank_ReportToFile(const char* text, const char* file_name,  const int account_id);
 void Bank_ReportToConsole(const char* text);
 void Bank_ReportInformation(const char* text, const int account_id);
 void Bank_ReportBalanceRaw(const char* text, const Account* account);
 void Bank_ReportBalance(const Account* account);
-void Bank_ReportBalanceProcess(const char* process, const double amount,
-                               const Account* account);
+void Bank_ReportBalanceProcess(const char* process, const double amount, const Account* account);
 void Bank_ChangeBalance(Account* account, const double amount);
 Account* Bank_ReadAccount(Bank* self);
 

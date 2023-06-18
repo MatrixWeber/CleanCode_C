@@ -2,55 +2,55 @@
 #include <stdbool.h>
 #include <stdio.h>
 #include "bank.h"
+#include "console.h"
 
-int main()
-{
-  Bank bank;
-  Bank_Init(&bank);
+int main() {
+    Bank bank;
+    Bank_Init(&bank);
 
-  while (true) {
-    printf("Welcome to the Bank of the Universe\n");
-    printf("Please press a button\n");
-    printf("'c' - Create new account\n");
-    printf("'d' - Deposit\n");
-    printf("'w' - Withdraw\n");
-    printf("'s' - Show balance\n");
-    printf("'q' - Quit program\n");
+    while (true) {
+        Console_Write("Welcome to the Bank of the Universe\n");
+        Console_Write("Please press a button\n");
+        Console_Write("'c' - Create new account\n");
+        Console_Write("'d' - Deposit\n");
+        Console_Write("'w' - Withdraw\n");
+        Console_Write("'s' - Show balance\n");
+        Console_Write("'q' - Quit program\n");
 
-    const char c = getchar();
+        const char c = getchar();
 
-    printf("\n");
+        Console_Write("\n");
 
-    switch (tolower(c)) {
-      case 'q':
-        return 0;
+        switch (tolower(c)) {
+            case 'q':
+                return 0;
 
-      case 'c':
-        Bank_CreateAccount(&bank);
-        break;
+            case 'c':
+                Bank_CreateAccount(&bank);
+                break;
 
-      case 'd':
-        Bank_Deposit(&bank);
-        break;
+            case 'd':
+                Bank_Deposit(&bank);
+                break;
 
-      case 'w':
-        Bank_Withdraw(&bank);
-        break;
+            case 'w':
+                Bank_Withdraw(&bank);
+                break;
 
-      case 's':
-        Bank_ShowBalance(&bank);
-        break;
+            case 's':
+                Bank_ShowBalance(&bank);
+                break;
 
-      default:
-        break;
+            default:
+                break;
+        }
+
+        char temp;
+        while ((temp = fgetc(stdin)) != EOF) {
+            if (temp == '\n') {
+                break;
+            }
+        }
     }
-
-    char temp;
-    while ((temp = fgetc(stdin)) != EOF) {
-      if (temp == '\n') {
-        break;
-      }
-    }
-  }
 }
 

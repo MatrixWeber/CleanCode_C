@@ -1,14 +1,11 @@
 #include "source/down_counter.h"
 
-static DownCounter *this;
-
-static void count() { this->base.count(-1); }
-
-void DownCounter_Init(DownCounter *self, int lower_limit, int upper_limit) {
-    this = self;
-    Counter_Init(&this->base);
-    this->count = count;
-    this->base.initLimits(lower_limit, upper_limit);
-    this->base.value = self->base.checker.getUpperLimit();
+void DownCounter_Init(DownCounter *const self, const int lower_limit, const int upper_limit) {
+    Counter_InitLimits(&self->base, lower_limit, upper_limit);
+    self->base.value = RangeChecker_GetUpperLimit(&self->base.checker);
 }
 
+void DownCounter_Count(DownCounter *const self)
+{
+    Counter_Count(&self->base, -1);
+}

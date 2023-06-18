@@ -3,13 +3,13 @@
 
 #ifdef ENABLE_TESTS
 
-#include "test/test_helpers.h"
 #include "source/counter.h"
+#include "test/test_helpers.h"
 
-void CountHelper(Counter* base, const int loops, const int step) {
-  for (int i = 0; i < loops; i++) {
-    Counter_Count(base, step);
-  }
+void CountHelper(Counter *const counter, const int loops, const int step) {
+    for (int i = 0; i < loops; i++) {
+        counter->count(step);
+    }
 }
 
 #endif

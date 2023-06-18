@@ -4,21 +4,15 @@
 
 #include "range_checker.h"
 
-typedef struct {
+typedef struct _Counter {
     int value;
-
-    void (*count)(const int);
-
-    int (*getValue)();
-
-    void (*reset)();
-
-    void (*initLimits)(const int lower_limit, const int upper_limit);
-
     RangeChecker checker;
 } Counter;
 
 void Counter_Init(Counter *const self);
-
+void Counter_Count(Counter *const self, const int amount);
+int Counter_GetValue(Counter *const self);
+void Counter_Reset(Counter *const self);
+void Counter_InitLimits(Counter *const self, const int lower_limit, const int upper_limit);
 
 #endif  // SOURCE_COUNTER_H_

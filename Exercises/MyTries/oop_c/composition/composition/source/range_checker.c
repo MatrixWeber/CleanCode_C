@@ -12,7 +12,7 @@ static bool areInputsValid(const int lower_limit, const int upper_limit) {
     return true;
 }
 
-static void initDefault() {
+static void initDefaults() {
     this->lower_limit = 0;
     this->upper_limit = INT_MAX;
 }
@@ -45,6 +45,6 @@ void RangeChecker_Init(RangeChecker *const self, const int lower_limit, const in
         self->lower_limit = lower_limit;
         self->upper_limit = upper_limit;
     } else {
-        initDefault();
+        initDefaults();
     }
 }

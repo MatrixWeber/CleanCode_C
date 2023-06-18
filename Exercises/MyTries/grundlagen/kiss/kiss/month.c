@@ -14,13 +14,8 @@ static bool isFebruary() {
     return this->month == 2;
 }
 
-static void _this(Month *const self) {
-    this = self;
-}
-
 void Month_Init(Month *const self, const unsigned int month) {
-    self->_this = _this;
-    self->_this(self);
+    this = self;
     self->month = month;
     self->isFebruary = isFebruary;
     self->isInvalid = isInvalid;

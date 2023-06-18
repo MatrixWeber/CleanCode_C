@@ -8,10 +8,6 @@ static Calendar *this;
 
 static const unsigned int day_info[] = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
 
-static void _this(Calendar *const self) {
-    this = self;
-}
-
 static unsigned int calculateDaysForLeapYear(const unsigned int days) {
     if (this->year->isLeapYear()) {
         return days + 1;
@@ -35,8 +31,7 @@ static unsigned int getDaysOfMonth(Month *const month) {
 }
 
 void Calendar_Init(Calendar *const self, Year *const year) {
-    self->_this = _this;
-    self->_this(self);
+    this = self;
     self->year = year;
     self->getDaysOfMonth = getDaysOfMonth;
 }

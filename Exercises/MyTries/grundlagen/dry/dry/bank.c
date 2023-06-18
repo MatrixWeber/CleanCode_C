@@ -1,5 +1,4 @@
 #include "bank.h"
-#include <stdbool.h>
 #include <stddef.h>
 #include <stdio.h>
 #include <string.h>
@@ -62,35 +61,18 @@ void WriteToFile(const char *file_name, const char *text) {
     Disk_Write(&disk, text);
 }
 
-void Bank_CreateAccount(Bank *const self) {
-    Account *account = CreateAccount(self);
-    if(account)
-    {
-        char customer_receipt[MAX_STRING_SIZE];
-        sprintf_s(customer_receipt, sizeof(customer_receipt), "customer_receipt_%d.txt", Account_GetId(account));
-        char text[50];
-        sprintf_s(text, sizeof(text), "Account %d created.\n\n", Account_GetId(account));
-        WriteToFile(customer_receipt, text);
-
-        const char *bank_receipt = "customer_receipt.txt";
-        char text1[100];
-        sprintf_s(text1, sizeof(text1), "Account %d:\n", Account_GetId(account));
-        sprintf_s(text1, sizeof(text1), "Account %d created.\n\n", Account_GetId(account));
-        WriteToFile(bank_receipt, text);
-    }
-}
-
-Account *GetAccount(const Bank *const self, const int account_id) {
+static Account *GetAccount(const Bank *const self, const int account_id) {
+    Account *account = NULL;
     const int account_index = account_id - 1;
-    if (account_index < 0 || account_index > MAX_ACCOUNTS) {
+    if (account_index < 0 || account_index >= MAX_ACCOUNTS) {
         ShowAccountNumNotExists(account_id);
+        return account;
     }
 
-    Account *account = self->accounts[account_index];
-    return account;
+    return self->accounts[account_index];
 }
 
-void WriteTransactionToFiles(Account *const account, const char transaction_text[100]) {
+static void WriteTransactionToFiles(Account *const account, const char transaction_text[100]) {
     char customer_receipt[MAX_STRING_SIZE];
     sprintf_s(customer_receipt, sizeof(customer_receipt), "customer_receipt_%d.txt", Account_GetId(account));
     char text[100];
@@ -105,12 +87,46 @@ void WriteTransactionToFiles(Account *const account, const char transaction_text
     WriteToFile(bank_receipt, text1);
 }
 
-void Bank_Deposit(Bank *const self) {
+static Account *Bank_ReadAccount(const Bank *const self) {
     Console_Write("Please enter your Account number: ");
     int account_id = Console_ReadNumber();
     Account *account = GetAccount(self, account_id);
     if (account == NULL) {
         ShowAccountNumNotExists(account_id);
+    }
+    return account;
+}
+
+static void ReportProcess(Account *const account, const double amount, const char *const process) {
+    ShowTransaction("deposited", amount);
+    ShowBalance(account);
+
+    char text[100];
+    sprintf_s(text, sizeof(text), "%.02f EUR paid.\n", amount);
+    WriteTransactionToFiles(account, text);
+}
+
+static void ReportAccountId(const char *const file_name, const int account_id) {
+    char text[100];
+    sprintf_s(text, sizeof(text), "Account %d created.\n\n", account_id);
+    WriteToFile(file_name, text);
+}
+
+void Bank_CreateAccount(Bank *const self) {
+    Account *account = CreateAccount(self);
+    if(account)
+    {
+        char customer_receipt[MAX_STRING_SIZE];
+        sprintf_s(customer_receipt, sizeof(customer_receipt), "customer_receipt_%d.txt", Account_GetId(account));
+        int account_id = Account_GetId(account);
+        ReportAccountId(customer_receipt, account_id);
+        ReportAccountId("customer_receipt.txt", account_id);
+    }
+}
+
+void Bank_Deposit(Bank *const self) {
+    Account *account = Bank_ReadAccount(self);
+    if (account == NULL) {
         return;
     }
 
@@ -118,73 +134,26 @@ void Bank_Deposit(Bank *const self) {
     double amount = Console_ReadDouble();
 
     Account_ChangeBalance(account, amount);
-    ShowTransaction("deposited", amount);
-    ShowBalance(account);
-
-    char text[100];
-    sprintf_s(text, sizeof(text), "%.02f EUR deposited.\n", amount);
-    WriteTransactionToFiles(account, text);
+    ReportProcess(account, amount, "deposited");
 
 }
 
 void Bank_Withdraw(Bank *const self) {
-    printf("Please enter your Account number: ");
-
-    int account_id = Console_ReadNumber();
-
-    const int account_index = account_id - 1;
-    if (account_index < 0 || account_index > MAX_ACCOUNTS) {
-        ShowAccountNumNotExists(account_id);
-    }
-
-    Account *account = self->accounts[account_index];
+    Account *account = Bank_ReadAccount(self);
     if (account == NULL) {
-        ShowAccountNumNotExists(account_id);
         return;
     }
-
-    printf("Enter the amount: ");
+    Console_Write("Enter the amount: ");
     double amount = Console_ReadDouble();
 
-    double balance = Account_GetBalance(account);
-    balance -= amount;
-    Account_SetBalance(account, balance);
-
-    ShowTransaction("paid", amount);
-    ShowBalance(account);
-    char text[100];
-    sprintf_s(text, sizeof(text), "%.02f EUR paid.\n", amount);
-    WriteTransactionToFiles(account, text);
+    Account_ChangeBalance(account, -amount);
+    ReportProcess(account, amount, "paid");
 }
 
 void Bank_ShowBalance(Bank *const self) {
-    printf("Please enter your Account number: ");
 
-    int account_id = 0;
-    while (true) {
-        const int items = scanf_s("%d", &account_id);
-
-        if (items > 0) {
-            break;
-        }
-
-        printf("Please enter a number\n");
-        char temp;
-        while ((temp = fgetc(stdin)) != EOF) {
-            if (temp == '\n') {
-                break;
-            }
-        }
-    }
-    const int account_index = account_id - 1;
-    if (account_index < 0 || account_index > MAX_ACCOUNTS) {
-        ShowAccountNumNotExists(account_id);
-        return;
-    }
-
-    Account *account = self->accounts[account_index];
+    Account *account = Bank_ReadAccount(self);
     if (account == NULL) {
-        ShowAccountNumNotExists(account_id);
         return;
     }
     ShowBalance(account);
