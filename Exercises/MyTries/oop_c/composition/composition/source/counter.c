@@ -32,5 +32,5 @@ void Counter_Init(Counter *const self) {
     this->getValue = getValue;
     this->reset = reset;
     this->initLimits = initLimits;
-    initLimits(0, INT_MAX);
+    this->initLimits(0, INT_MAX);
 }

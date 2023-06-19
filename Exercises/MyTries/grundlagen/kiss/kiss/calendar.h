@@ -12,10 +12,7 @@ typedef struct Calendar Calendar;
 
 struct Calendar {
     Year *year;
-
     unsigned int (*getDaysOfMonth)(Month *const);
-
-    unsigned int (*calculateDaysForLeapYear)(const unsigned int);
 };
 
 void Calendar_Init(Calendar *const self, Year *const year);

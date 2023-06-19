@@ -2,7 +2,6 @@
 #include <stdio.h>
 #include "datehelper.h"
 
-// ToDo: Funktion GetDaysOfMonth vereinfachen
 int GetDaysOfMonth(const int month, const int year)
 {
   if (month < 1 || month > 12) {
@@ -12,8 +11,7 @@ int GetDaysOfMonth(const int month, const int year)
   int day_info[] = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
   int day_info_leap_year[] = {31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
 
-  const bool is_leap_year =
-      year % 4 == 0 && (year % 100 != 0 || year % 400 == 0);
+  const bool is_leap_year = year % 4 == 0 && (year % 100 != 0 || year % 400 == 0);
   return is_leap_year ? day_info_leap_year[month - 1] : day_info[month - 1];
 }
 

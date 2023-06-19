@@ -6,7 +6,7 @@
 #include "../../test_framework/test_functions.h"
 #include "source/up_counter.h"
 
-static void DownCountHelper(UpCounter* counter, const int loops) {
+static void UpCountHelper(UpCounter* counter, const int loops) {
   for (int i = 0; i < loops; i++) {
     UpCounter_Count(counter);
   }
@@ -56,7 +56,7 @@ TEST(Test_UpCounter_Count1) {
   UpCounter counter;
   UpCounter_Init(&counter, lower_limit, upper_limit);
 
-  DownCountHelper(&counter, expected + (upper_limit + 1));
+    UpCountHelper(&counter, expected + (upper_limit + 1));
 
   ASSERT_INT(Counter_GetValue(&counter.base), expected);
 }
@@ -69,7 +69,7 @@ TEST(Test_UpCounter_Count2) {
   UpCounter counter;
   UpCounter_Init(&counter, lower_limit, upper_limit);
 
-  DownCountHelper(&counter, expected + (upper_limit + 1));
+    UpCountHelper(&counter, expected + (upper_limit + 1));
 
   ASSERT_INT(Counter_GetValue(&counter.base), expected);
 }
@@ -82,7 +82,7 @@ TEST(Test_UpCounter_Count3) {
   UpCounter counter;
   UpCounter_Init(&counter, lower_limit, upper_limit);
 
-  DownCountHelper(&counter, expected + (3 * (upper_limit + 1)));
+    UpCountHelper(&counter, expected + (3 * (upper_limit + 1)));
 
   ASSERT_INT(Counter_GetValue(&counter.base), expected);
 }

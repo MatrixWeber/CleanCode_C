@@ -6,15 +6,10 @@
 
 typedef struct {
     int value;
-
     void (*count)(const int);
-
     int (*getValue)();
-
     void (*reset)();
-
     void (*initLimits)(const int lower_limit, const int upper_limit);
-
     RangeChecker checker;
 } Counter;
 

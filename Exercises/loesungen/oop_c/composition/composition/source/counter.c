@@ -2,7 +2,9 @@
 #include "source/counter.h"
 #include <limits.h>
 
-void Counter_Init(Counter *self) { Counter_InitLimits(self, 0, INT_MAX); }
+void Counter_Init(Counter *self) {
+    Counter_InitLimits(self, 0, INT_MAX);
+}
 
 void Counter_InitLimits(Counter *self, int lower_limit, int upper_limit) {
     RangeChecker_Init(&self->checker, lower_limit, upper_limit);

@@ -2,14 +2,11 @@
 #ifndef SOURCE_RANGE_CHECKER_H_
 #define SOURCE_RANGE_CHECKER_H_
 
-typedef struct _RangeChecker {
+typedef struct {
     int lower_limit;
     int upper_limit;
-
     int (*isInside)(const int);
-
     int (*getLowerLimit)();
-
     int (*getUpperLimit)();
 } RangeChecker;
 
