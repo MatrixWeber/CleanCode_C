@@ -14,17 +14,17 @@ void Account_SetInterest(Account *self, InterestCalculator *const interest_calcu
 void Account_Deposit(Account *self, double amount) {
     self->balance += amount;
 
-    Log("\nDeposit, balance: ");
+    LogText("\nDeposit, balance: ");
     LogDouble(self->balance);
-    Log("\n");
+    LogText("\n");
 }
 
 double Account_Withdraw(Account *self, double amount) {
     self->balance -= amount;
 
-    Log("\nWithdraw, balance: ");
+    LogText("\nWithdraw, balance: ");
     LogDouble(self->balance);
-    Log("\n");
+    LogText("\n");
 
     return amount;
 }
@@ -37,9 +37,9 @@ double Account_CalculateInterest(Account *self) {
 
     const double interest = self->balance * interest_rate;
 
-    Log("\nCalculate interest, amount: ");
+    LogText("\nCalculate interest, amount: ");
     LogDouble(interest);
-    Log("\n");
+    LogText("\n");
 
     return interest;
 }

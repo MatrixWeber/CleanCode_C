@@ -8,7 +8,7 @@
 typedef struct
 {
     int (*readNumber)(const char *const);
-    void (*print)(const char *);
+    void (*print)(const char *const);
     const char *(*readString)();
 } ILogable;
 

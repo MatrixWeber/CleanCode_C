@@ -5,17 +5,24 @@
 #include <stdio.h>
 #include "null_object.h"
 
-int NullObject_ReadNumber(const char *const name) {
+static void NullObject_Print(const char *const text) {
+    printf("%s", text);
+}
+
+static int NullObject_ReadNumber(const char *const name) {
     NullObject_Print("Not implemented\n");
     return 1;
 }
 
-void NullObject_Print(const char *text) {
-    printf("%s", text);
-}
-
-const char *NullObject_ReadString() {
+static const char *NullObject_ReadString() {
     const char *text = "Not implemented\n";
     NullObject_Print(text);
     return text;
+}
+
+
+void NullObject_Init(NullObject *const self) {
+    self->i_Logable.print = NullObject_Print;
+    self->i_Logable.readNumber = NullObject_ReadNumber;
+    self->i_Logable.readString = NullObject_ReadString;
 }

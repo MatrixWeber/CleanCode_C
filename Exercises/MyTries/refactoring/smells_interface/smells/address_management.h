@@ -6,15 +6,13 @@
 
 #define MAX_NUMBER_OF_ADDRESSES 20
 
-typedef struct AddressManagement AddressManagement;
 
-struct AddressManagement {
-    void (*RegisterThis)(AddressManagement *const );
+typedef struct  {
     Address addresses[MAX_NUMBER_OF_ADDRESSES];
     int number_of_addresses;
     void (*readAllAddresses)();
     void (*printAllAddresses)();
-};
+} AddressManagement;
 
 void AddressManagement_Init(AddressManagement *const self, const int number_of_addresses, ILogable *const i_logable);
 

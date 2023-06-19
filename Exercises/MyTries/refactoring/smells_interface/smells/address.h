@@ -13,7 +13,6 @@ struct Address{
     char city[MAX_NAME_SIZE];
     int zip_code;
     ILogable* i_logable;
-    void (*register_this)(Address*const);
     void (*addressShow)();
     void (*addressRead)();
 };

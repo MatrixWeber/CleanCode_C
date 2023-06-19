@@ -9,14 +9,12 @@
 
 #define MAX_FILE_NAME_SIZE 100
 
-typedef struct Disk Disk;
-struct Disk
+typedef struct
 {
-    void (*register_this)(Disk*const);
     char file_name[MAX_FILE_NAME_SIZE];
-    ILogable i_Logable;
     ILogable* console;
-};
+    ILogable logable;
+} Disk;
 
 void Disk_Init(Disk *const self, const char *const file_name, ILogable *const console);
 

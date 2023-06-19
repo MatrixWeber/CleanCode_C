@@ -8,14 +8,11 @@
 #include "address_management.h"
 #include "i_logable.h"
 
-typedef struct Application Application;
-
-struct Application {
-    void (*init_this)(Application *const);
+typedef struct  {
     AddressManagement address_management;
     void (*run)();
     ILogable* i_logable;
-};
+} Application;
 
 void Application_Init(Application *const self, const int number_of_addresses, ILogable *const i_logable);
 

@@ -4,11 +4,6 @@
 
 static Address* this;
 
-static void register_this(Address*const self)
-{
-    this = self;
-}
-
 static void Address_ReadString(const char *const name, char *dest_string) {
     this->i_logable->print(name);
     const char *string = this->i_logable->readString();
@@ -47,8 +42,7 @@ static void Address_Read() {
 }
 
 void Address_Init(Address *const self, ILogable *const i_logable) {
-    self->register_this = register_this;
-    self->register_this(self);
+    this = self;
     self->i_logable = i_logable;
     self->city[0] = '\0';
     self->name[0] = '\0';

@@ -5,7 +5,7 @@
 #ifndef SRP_LOGGER_H
 #define SRP_LOGGER_H
 
-void WriteLog(const char* message, double data);
-void WriteLog_WithTimestamp(const char* message);
+void Log_Double(const char *const message, const double value);
+void Log_WithTimestamp(const char *const message);
 
 #endif //SRP_LOGGER_H

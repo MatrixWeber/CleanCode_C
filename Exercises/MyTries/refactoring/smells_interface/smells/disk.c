@@ -5,15 +5,10 @@
 #include <stdio.h>
 #include <string.h>
 #include "disk.h"
-#include "null_object.h"
 
 static Disk *this;
 
 static void WriteToFile(const char *text);
-
-static void register_this(Disk *const self) {
-    this = self;
-}
 
 static void WriteToFile(const char *text) {
     FILE *file;
@@ -24,7 +19,7 @@ static void WriteToFile(const char *text) {
     }
 }
 
-static int ReadNumber(const char *const name) {
+static int readNumber(const char *const name) {
     const int number = this->console->readNumber(name);
     char str[50];
     sprintf(str, "%s: %d", name, number);
@@ -32,38 +27,22 @@ static int ReadNumber(const char *const name) {
     return number;
 }
 
-static void Print(const char *text) {
+static void print(const char *const text) {
     this->console->print(text);
     WriteToFile(text);
 }
 
-static const char *ReadString() {
+static const char *readString() {
     const char* str = this->console->readString();
     WriteToFile(str);
     return str;
 }
 
-static void CreateAndRegisterNullObjet(Disk *const self) {
-    static ILogable null_object;
-    self->console = &null_object;
-    self->console->print = NullObject_Print;
-    self->console->readNumber = NullObject_ReadNumber;
-    self->console->readString = NullObject_ReadString;
-}
-
 void Disk_Init(Disk *const self, const char *const file_name, ILogable *const console) {
-    self->register_this = register_this;
-    self->register_this(self);
-    self->i_Logable.print = Print;
-    self->i_Logable.readNumber = ReadNumber;
-    self->i_Logable.readString = ReadString;
+    this = self;
+    self->console = console;
+    self->logable.print = print;
+    self->logable.readNumber = readNumber;
+    self->logable.readString = readString;
     strcpy(self->file_name, file_name);
-    if(console)
-    {
-        self->console = console;
-    }
-    else
-    {
-        CreateAndRegisterNullObjet(self);
-    }
 }

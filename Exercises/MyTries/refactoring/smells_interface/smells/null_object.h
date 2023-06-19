@@ -5,9 +5,13 @@
 #ifndef SMELLS_NULLOBJECT_H
 #define SMELLS_NULLOBJECT_H
 
-int NullObject_ReadNumber(const char *const name);
-void NullObject_Print(const char *text);
-const char *NullObject_ReadString();
+#include "i_logable.h"
 
+typedef struct
+{
+    ILogable i_Logable;
+} NullObject;
+
+void NullObject_Init(NullObject *const self);
 
 #endif //SMELLS_NULLOBJECT_H

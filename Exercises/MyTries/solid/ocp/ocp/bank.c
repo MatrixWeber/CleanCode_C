@@ -30,9 +30,9 @@ Account* Bank_CreateAccount(Bank* self)
     return NULL;
   }
 
-  Log("\nCreate account, number of accounts: ");
+    LogText("\nCreate account, number of accounts: ");
   LogDouble(account_index);
-  Log("\n");
+    LogText("\n");
 
   Account* account = &self->account_objects[account_index];
   return account;

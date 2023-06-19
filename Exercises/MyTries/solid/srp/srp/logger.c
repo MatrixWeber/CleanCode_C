@@ -6,18 +6,18 @@
 #include "my_time.h"
 #include "logger.h"
 
-void WriteLog(const char* message, double data)
+void Log_Double(const char *const message, const double value)
 {
-    printf( "%s %f\n", message, data);
+    printf("%s %f\n", message, value);
 }
 
-static void WriteLog_S(const char* message, const char* info)
+static void Log_String(const char* message, const char* info)
 {
     printf( "%s %s\n", message, info);
 }
 
-void WriteLog_WithTimestamp(const char* message)
+void Log_WithTimestamp(const char *const message)
 {
     const char* time_string = GetTimeString();
-    WriteLog_S(message, time_string);
+    Log_String(message, time_string);
 }

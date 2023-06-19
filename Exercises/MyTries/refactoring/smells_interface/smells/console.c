@@ -7,7 +7,7 @@
 #include <string.h>
 #include "console.h"
 
-static int ReadNumber(const char *const name) {
+static int readNumber(const char *const name) {
     int number = 0;
     while (true) {
         printf("Please enter the %s: ", name);
@@ -28,9 +28,9 @@ static int ReadNumber(const char *const name) {
     return number;
 }
 
-static void Print(const char *text) { printf("%s", text); }
+static void print(const char *const text) { printf("%s", text); }
 
-static const char *ReadString() {
+static const char *readString() {
     static char string[] = {'\0'};
     scanf("%s", string);
     return string;
@@ -38,7 +38,7 @@ static const char *ReadString() {
 
 void Console_Init(Console*const self)
 {
-    self->i_Logable.print = Print;
-    self->i_Logable.readNumber = ReadNumber;
-    self->i_Logable.readString = ReadString;
+    self->i_Logable.print = print;
+    self->i_Logable.readNumber = readNumber;
+    self->i_Logable.readString = readString;
 }

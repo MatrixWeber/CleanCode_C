@@ -5,7 +5,7 @@
 
 int main()
 {
-  Log("Banking program: Start\n");
+    LogText("Banking program: Start\n");
 
   Bank bank;
 
@@ -31,7 +31,7 @@ int main()
 
   Bank_PayInterest(&bank);
 
-  Log("\nBanking program: End\n");
+    LogText("\nBanking program: End\n");
 
   return 0;
 }

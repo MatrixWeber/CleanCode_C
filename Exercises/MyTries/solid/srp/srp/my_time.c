@@ -2,7 +2,6 @@
 // Created by SW on 04.06.2023.
 //
 
-#include <stdio.h>
 #include <time.h>
 
 const char* GetTimeString()

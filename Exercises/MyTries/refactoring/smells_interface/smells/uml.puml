@@ -1,0 +1,70 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+interface ILogable
+{
+ +    int (*readNumber)(const char *const);
+ +    void (*print)(const char *const);
+ +    const char *(*readString)();
+}
+
+ILogable <|-- Disk
+ILogable <-- Disk
+ILogable <- Address
+Application -> ILogable
+AddressManagement  --* Application
+AddressManagement  --> Address
+ILogable <|-- Console
+ILogable <|-- NullObject
+
+
+class Disk {
+ +    void Disk_Init(Disk *const self, const char *const file_name, ILogable *const console);
+ +    int readNumber(const char *const name);
+ +    void print(const char *const text);
+ +    const char * readString();
+ -    char file_name[MAX_FILE_NAME_SIZE];
+ -    ILogable* console;
+ -    ILogable logable;
+}
+
+class Console {
+ +    void Console_Init(NullObject *const self);
+ +    int readNumber(const char *const name);
+ +    void print(const char *const text);
+ +    const char * readString();
+}
+
+class NullObject {
+ +    void NullObject_Init(NullObject *const self);
+ +    int readNumber(const char *const name);
+ +    void print(const char *const text);
+ +    const char * readString();
+}
+
+class Application {
+    - AddressManagement address_management;
+    - ILogable* i_logable;
+    + void Application_Init(Application *const, const int, ILogable *const);
+    + void run();
+}
+
+class AddressManagement {
+    -     Address addresses[MAX_NUMBER_OF_ADDRESSES];
+    -     int number_of_addresses;
+    +     void readAllAddresses();
+    +     void printAllAddresses();
+    +     void AddressManagement_Init(AddressManagement *const, const int, ILogable *const);
+}
+
+class Address {
+    -         char name[MAX_NAME_SIZE];
+     -         char street[MAX_NAME_SIZE];
+    -          char city[MAX_NAME_SIZE];
+    -          int zip_code;
+    -          ILogable* i_logable;
+    +          void Address_Init(Address *const, ILogable *const);
+     +         void addressShow();
+    +          void addressRead();
+}
+@enduml
