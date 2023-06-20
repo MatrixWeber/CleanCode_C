@@ -8,14 +8,11 @@
 #include "i_operationable.h"
 #include "divide_operation.h"
 
-typedef struct DivideOperationProxy DivideOperationProxy;
-
-struct DivideOperationProxy
+typedef struct
 {
-    void (*RegisterThis)(DivideOperationProxy*const);
     DivideOperation divide_operation;
     IOperationable operationable;
-};
+} DivideOperationProxy;
 
 void DivideOperationProxy_Init(DivideOperationProxy*const self);
 

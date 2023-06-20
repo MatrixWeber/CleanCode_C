@@ -7,13 +7,10 @@
 
 #include "i_operationable.h"
 
-typedef struct MultiplyOperation MultiplyOperation;
-
-struct MultiplyOperation
+typedef struct
 {
-    void (*RegisterThis)(MultiplyOperation*const);
     IOperationable operationable;
-};
+} MultiplyOperation;
 
 void MultiplyOperation_Init(MultiplyOperation*const self);
 

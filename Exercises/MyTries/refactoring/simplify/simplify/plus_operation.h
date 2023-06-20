@@ -7,13 +7,10 @@
 
 #include "i_operationable.h"
 
-typedef struct PlusOperation PlusOperation;
-
-struct PlusOperation
+typedef struct
 {
-    void (*RegisterThis)(PlusOperation*const);
     IOperationable operationable;
-};
+} PlusOperation;
 
 void PlusOperation_Init(PlusOperation*const self);
 

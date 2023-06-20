@@ -8,12 +8,10 @@
 #include "year.h"
 #include "month.h"
 
-typedef struct Calendar Calendar;
-
-struct Calendar {
+typedef struct  {
     Year *year;
     unsigned int (*getDaysOfMonth)(Month *const);
-};
+} Calendar;
 
 void Calendar_Init(Calendar *const self, Year *const year);
 

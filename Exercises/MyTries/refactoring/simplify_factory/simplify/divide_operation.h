@@ -7,12 +7,10 @@
 
 #include "i_operationable.h"
 
-typedef struct DivideOperation DivideOperation;
-
-struct DivideOperation
+typedef struct
 {
     IOperationable operationable;
-};
+} DivideOperation;
 
 void DivideOperation_Init(DivideOperation*const self);
 

@@ -11,9 +11,9 @@ class Calendar {
 	-year : Year
 	-{static} maxNumOfMonth : static const unsigned char
 	-{static} day_info : static unsigned char
-	-calculateDays(const Month& month) : unsigned int
+	-calculateDays(const Month*const month) : unsigned int
 	-calculateDaysForLeapYear(const unsigned int days) : unsigned int
-	+getDaysOfMonth(const Month& month) : unsigned int
+	+getDaysOfMonth(const Month*const month) : unsigned int
 }
 
 

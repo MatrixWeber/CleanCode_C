@@ -16,6 +16,12 @@ int main()
     Account_SetType(account, kCheckingAccount);
   }
 
+  for (int i = 0; i < 10; i++) {
+    Account* account = Bank_CreateAccount(&bank);
+    Account_Deposit(account, 20.0);
+    Account_SetType(account, kSavingsAccount);
+  }
+
   Bank_PayInterest(&bank);
 
   Log("\nBanking program: End\n");

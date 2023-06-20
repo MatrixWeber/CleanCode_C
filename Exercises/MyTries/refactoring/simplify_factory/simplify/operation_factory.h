@@ -7,11 +7,9 @@
 
 #include "i_factoryable.h"
 
-typedef struct OperationFactory OperationFactory;
-
-struct OperationFactory{
+typedef struct {
     IFactoryable factoryable;
-};
+} OperationFactory;
 
 void OperationFactory_Init(OperationFactory*const self);
 

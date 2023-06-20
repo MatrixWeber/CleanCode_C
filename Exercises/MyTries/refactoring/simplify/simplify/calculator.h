@@ -3,12 +3,12 @@
 
 #include "i_operationable.h"
 
-typedef struct Calculator_ {
-  char last_operation;
+typedef struct {
+    char last_operation;
+    double (*calculate)(const IOperationable *const, const double, const double);
+    char (*getLastOperation)();
 } Calculator;
 
-void Calculator_Init(Calculator* self);
-double Calculator_Calculate(Calculator* self, const IOperationable *const operation, const double left_operand, const double right_operand);
-char Calculator_GetLastOperation(const Calculator* self);
+void Calculator_Init(Calculator *self);
 
 #endif  // CALCULATOR_H

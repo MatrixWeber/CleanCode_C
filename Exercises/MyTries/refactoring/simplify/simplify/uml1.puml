@@ -8,8 +8,9 @@
 
 class Calculator {
 	+Calculator_Init(Calculator*const self)
-	+GetLastOperation() : char 
-	+Calculate(IOperationable& operation, const double left_operand, const double right_operand) : double
+	+getLastOperation() : char
+	+calculate(IOperationable& operation, const double left_operand, const double right_operand) : double
+	- last_operation : char
 }
 
 
@@ -89,7 +90,7 @@ IOperationable <|-- MultiplyOperation
 
 IOperationable <|-- PlusOperation
 
-Calculator --> IOperationable : uses
+Calculator ..> IOperationable : uses
 
 
 
@@ -97,7 +98,7 @@ Calculator --> IOperationable : uses
 
 /' Aggregation relationships '/
 
-DivideOperationProxy *-- DivideOperation
+DivideOperationProxy *- DivideOperation
 
 
 

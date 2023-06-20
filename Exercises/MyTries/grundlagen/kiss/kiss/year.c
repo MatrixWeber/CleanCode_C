@@ -4,16 +4,16 @@
 
 #include "year.h"
 
-static Year *this;
+static Year *own;
 
 static bool isDividableBy4ButNotBy100() {
-    bool isYearDividableByFour = this->year % 4 == 0;
-    bool isYearNotDividableByHundred = this->year % 100 != 0;
+    bool isYearDividableByFour = own->year % 4 == 0;
+    bool isYearNotDividableByHundred = own->year % 100 != 0;
     return isYearDividableByFour && isYearNotDividableByHundred;
 }
 
 static bool isDividableBy400() {
-    bool isYearDividableByFourHundred = this->year % 400 == 0;
+    bool isYearDividableByFourHundred = own->year % 400 == 0;
     if (isYearDividableByFourHundred) {
         return true;
     }
@@ -28,7 +28,7 @@ bool isLeapYear() {
 }
 
 void Year_Init(Year *const self, const unsigned int year) {
-    this = self;
+    own = self;
     self->year = year;
     self->isLeapYear = isLeapYear;
 }

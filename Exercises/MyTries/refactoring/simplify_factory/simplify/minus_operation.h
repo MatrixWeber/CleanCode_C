@@ -7,12 +7,10 @@
 
 #include "i_operationable.h"
 
-typedef struct MinusOperation MinusOperation;
-
-struct MinusOperation
+typedef struct
 {
     IOperationable operationable;
-};
+} MinusOperation;
 
 void MinusOperation_Init(MinusOperation*const self);
 

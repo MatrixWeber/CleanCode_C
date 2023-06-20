@@ -6,27 +6,21 @@
 
 static DivideOperation* this;
 
-static void RegisterThis(DivideOperation*const self)
-{
-    this = self;
-}
-
 static char lastOperation()
 {
     return '/';
 }
-static double execute(const double left_operand, const double right_operand)
-{
-    if(right_operand)
+static double execute(const double left_operand, const double right_operand) {
+    if (right_operand == 0)
     {
-        return left_operand / right_operand;
+        return 0;
     }
-    return 0;
+    return left_operand / right_operand;
 }
 
 void DivideOperation_Init(DivideOperation*const self)
 {
-    RegisterThis(self);
+    this = self;
     self->operationable.execute = execute;
     self->operationable.lastOperation = lastOperation;
 

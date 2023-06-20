@@ -1,0 +1,15 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+class Logger
+class MyTime
+class Bank
+class Account
+
+Logger ..> MyTime : using
+Bank ..> Logger : using
+Bank *-- Account
+Account ..> Logger : using
+
+
+@enduml

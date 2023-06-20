@@ -7,12 +7,10 @@
 
 #include "i_operationable.h"
 
-typedef struct NullOperation NullOperation;
-
-struct NullOperation
+typedef struct
 {
     IOperationable operationable;
-};
+} NullOperation;
 
 void NullOperation_Init(NullOperation*const self);
 

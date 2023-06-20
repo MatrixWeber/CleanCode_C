@@ -2,10 +2,6 @@
 #include "i_operationable.h"
 
 static Calculator* this;
-static void RegisterThis(Calculator*const self)
-{
-    this = self;
-}
 
 static double Calculate(const char operation, const double left_operand, const double right_operand) {
     IOperationable* operationable = this->factory->create(operation);
@@ -19,9 +15,9 @@ static char GetLastOperation() {
 
 void Calculator_Init(Calculator*const self, IFactoryable*const factory)
 {
-    RegisterThis(self);
+    this = self;
     self->last_operation = '+';
     self->factory = factory;
-    self->Calculate = Calculate;
-    self->GetLastOperation = GetLastOperation;
+    self->calculate = Calculate;
+    self->getLastOperation = GetLastOperation;
 }

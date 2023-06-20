@@ -28,7 +28,7 @@ class DivideOperation {
 
 class DivideOperationProxy {
 	+DivideOperationProxy_Init(DivideOperationProxy*const self)
-	+divide_operation : DivideOperation
+	+divide_operation : IOperationable*
     +operationable : IOperationable
 	-this : DivideOperationProxy*
 	-lastOperation() : char
@@ -74,7 +74,7 @@ class PlusOperation {
 
 
 
-Calculator --> IOperationable : uses
+Calculator --> IOperationable
 
 /' Inheritance relationships '/
 
@@ -82,6 +82,7 @@ IOperationable <|-- DivideOperation
 
 
 IOperationable <|-- DivideOperationProxy
+IOperationable <-- DivideOperationProxy
 
 
 IOperationable <|-- MinusOperation

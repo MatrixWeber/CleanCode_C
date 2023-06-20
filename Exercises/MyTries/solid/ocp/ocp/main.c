@@ -3,35 +3,34 @@
 #include "bank.h"
 #include "logger.h"
 
-int main()
-{
+int main() {
     LogText("Banking program: Start\n");
 
-  Bank bank;
+    Bank bank;
 
-  Bank_Init(&bank);
+    Bank_Init(&bank);
     {
         InterestCalculator interest_calculator;
         InterestCalculator_Init(&interest_calculator, 0.01);
         for (int i = 0; i < 8; i++) {
-            Account *account = Bank_CreateAccount(&bank);
-            Account_Deposit(account, 20.0);
-            Account_SetInterest(account, &interest_calculator);
+            Account *checking_account = Bank_CreateAccount(&bank);
+            Account_Deposit(checking_account, 20.0);
+            Account_SetInterest(checking_account, &interest_calculator);
         }
     }
     {
         InterestCalculator interest_calculator;
         InterestCalculator_Init(&interest_calculator, 0.75);
-        for (int i = 0; i < 8; i++) {
-            Account *account = Bank_CreateAccount(&bank);
-            Account_Deposit(account, 20.0);
-            Account_SetInterest(account, &interest_calculator);
+        for (int i = 0; i < 10; i++) {
+            Account *saving_account = Bank_CreateAccount(&bank);
+            Account_Deposit(saving_account, 20.0);
+            Account_SetInterest(saving_account, &interest_calculator);
         }
     }
 
-  Bank_PayInterest(&bank);
+    Bank_PayInterest(&bank);
 
     LogText("\nBanking program: End\n");
 
-  return 0;
+    return 0;
 }

@@ -2,7 +2,7 @@
 #include <math.h>
 
 // private members ...
-typedef struct OperationInfo_ {
+typedef struct {
   char operation_id;
   double (*operation_func)(const double, const double);
 } OperationInfo;

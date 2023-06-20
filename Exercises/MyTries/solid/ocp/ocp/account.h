@@ -1,10 +1,9 @@
 #ifndef ACCOUNT_H
 #define ACCOUNT_H
 
-#include "account_type.h"
 #include "interest_calculator.h"
 
-typedef struct Account_ {
+typedef struct {
   double balance;
   InterestCalculator* interest_calculator;
 } Account;

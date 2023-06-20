@@ -55,7 +55,7 @@ void Bank_Init(Bank *const self) {
     }
 }
 
-void WriteToFile(const char *file_name, const char *text) {
+static void WriteToFile(const char *file_name, const char *text) {
     Disk disk;
     Disk_Init(&disk, file_name);
     Disk_Write(&disk, text);

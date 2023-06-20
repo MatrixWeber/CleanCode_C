@@ -15,7 +15,7 @@ TEST(TestCalculatorAddition) {
 
     const double first_value = 2.1;
     const double second_value = 4.2;
-    ASSERT(Calculator_Calculate(&calc, &operation.operationable, first_value, second_value) ==
+    ASSERT(calc.calculate(&operation.operationable, first_value, second_value) ==
            first_value + second_value,
            "Addition failed");
 }
@@ -27,7 +27,7 @@ TEST(TestCalculatorSubtraction) {
     MinusOperation_Init(&operation);
     const double first_value = 2.1;
     const double second_value = 4.2;
-    ASSERT(Calculator_Calculate(&calc, &operation.operationable, first_value, second_value) ==
+    ASSERT(calc.calculate(&operation.operationable, first_value, second_value) ==
            first_value - second_value,
            "Subtraction failed");
 }
@@ -39,7 +39,7 @@ TEST(TestCalculatorMultiply) {
     MultiplyOperation_Init(&operation);
     const double first_value = 2.1;
     const double second_value = 4.2;
-    ASSERT(Calculator_Calculate(&calc, &operation.operationable, first_value, second_value) ==
+    ASSERT(calc.calculate(&operation.operationable, first_value, second_value) ==
            first_value * second_value,
            "Multiply failed");
 }
@@ -51,7 +51,7 @@ TEST(TestCalculatorDivision) {
     DivideOperationProxy_Init(&operation);
     const double first_value = 2.1;
     const double second_value = 4.2;
-    ASSERT(Calculator_Calculate(&calc, &operation.operationable, first_value, second_value) ==
+    ASSERT(calc.calculate(&operation.operationable, first_value, second_value) ==
            first_value / second_value,
            "Division failed");
 }
@@ -65,9 +65,9 @@ TEST(TestCalculatorLastOperationValid) {
     DivideOperationProxy_Init(&divide_operation);
     const double first_value = 2.1;
     const double second_value = 4.2;
-    Calculator_Calculate(&calc, &divide_operation.operationable, first_value, second_value);
+    calc.calculate(&divide_operation.operationable, first_value, second_value);
 
-    ASSERT(Calculator_GetLastOperation(&calc) == operation,
+    ASSERT(calc.getLastOperation() == operation,
            "GetLastOperation failed");
 }
 
@@ -79,7 +79,7 @@ TEST(TestCalculatorDivisionByZero) {
     const double first_value = 2.1;
     const double second_value = 0;
 
-    ASSERT(Calculator_Calculate(&calc, &divide_operation.operationable, first_value, second_value) ==
+    ASSERT(calc.calculate(&divide_operation.operationable, first_value, second_value) ==
            0,
            "Division by zero failed");
 }

@@ -8,12 +8,12 @@ interface ILogable
  +    const char *(*readString)();
 }
 
+Application  --* AddressManagement
 ILogable <|-- Disk
 ILogable <-- Disk
-ILogable <- Address
+ILogable <-- Address
 Application -> ILogable
-AddressManagement  --* Application
-AddressManagement  --> Address
+AddressManagement  -> Address
 ILogable <|-- Console
 ILogable <|-- NullObject
 
@@ -33,6 +33,7 @@ class Console {
  +    int readNumber(const char *const name);
  +    void print(const char *const text);
  +    const char * readString();
+  -    ILogable logable;
 }
 
 class NullObject {
@@ -40,6 +41,7 @@ class NullObject {
  +    int readNumber(const char *const name);
  +    void print(const char *const text);
  +    const char * readString();
+  -    ILogable logable;
 }
 
 class Application {

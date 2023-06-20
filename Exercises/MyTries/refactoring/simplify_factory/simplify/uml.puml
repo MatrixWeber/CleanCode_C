@@ -30,7 +30,6 @@ class Calculator {
 	+Calculator_Init(Calculator*const self, IFactoryable* factory)
 	+GetLastOperation() : char
 	+Calculate(const char operation, const double left_operand, const double right_operand) : double
-    -RegisterThis(Calculator* self) : void
 }
 
 
@@ -40,7 +39,6 @@ class DivideOperation {
 	-this : DivideOperation*
 	-lastOperation() : char
 	-execute(const double leftOperand, const double rightOperand) : double
-    -RegisterThis(DivideOperation* self) : void
 }
 
 class MinusOperation {
@@ -49,7 +47,6 @@ class MinusOperation {
 	-this : MinusOperation*
 	-lastOperation() : char
 	-execute(const double leftOperand, const double rightOperand) : double
-    -RegisterThis(MinusOperation* self) : void
 }
 
 
@@ -59,7 +56,6 @@ class MultiplyOperation {
 	-this : MultiplyOperation*
 	-lastOperation() : char
 	-execute(const double leftOperand, const double rightOperand) : double
-    -RegisterThis(MultiplyOperation* self) : void
 }
 
 
@@ -69,7 +65,6 @@ class PlusOperation {
 	-this : PlusOperation*
 	-lastOperation() : char
 	-execute(const double leftOperand, const double rightOperand) : double
-    -RegisterThis(PlusOperation* self) : void
 }
 
 

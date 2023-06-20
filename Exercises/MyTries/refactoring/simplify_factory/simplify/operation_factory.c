@@ -2,7 +2,6 @@
 // Created by SW on 08.06.2023.
 //
 
-#include <stdbool.h>
 #include "operation_factory.h"
 #include "null_operation.h"
 #include "plus_operation.h"
@@ -11,10 +10,6 @@
 #include "divide_operation.h"
 
 static OperationFactory *this;
-
-static void RegisterThis(OperationFactory *const self) {
-    this = self;
-}
 
 static IOperationable *create(const char operation) {
     switch (operation) {
@@ -41,7 +36,6 @@ static IOperationable *create(const char operation) {
             DivideOperation_Init(&divide_operation);
             return &divide_operation.operationable;
         }
-
         default:
             static NullOperation null_operation;
             NullOperation_Init(&null_operation);
@@ -50,6 +44,6 @@ static IOperationable *create(const char operation) {
 }
 
 void OperationFactory_Init(OperationFactory *const self) {
-    RegisterThis(self);
+    this = self;
     self->factoryable.create = create;
 }

@@ -7,12 +7,10 @@
 
 #include "i_operationable.h"
 
-typedef struct MultiplyOperation MultiplyOperation;
-
-struct MultiplyOperation
+typedef struct
 {
     IOperationable operationable;
-};
+} MultiplyOperation;
 
 void MultiplyOperation_Init(MultiplyOperation*const self);
 
