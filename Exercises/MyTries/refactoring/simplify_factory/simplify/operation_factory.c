@@ -31,7 +31,9 @@ static IOperationable *create(const char operation) {
             return &multiply_operation.operationable;
         }
 
-        case '/': {
+        case '/':
+        case ':':
+        {
             static DivideOperation divide_operation;
             DivideOperation_Init(&divide_operation);
             return &divide_operation.operationable;

@@ -14,13 +14,13 @@ int main() {
         NullObject_Init(&nullObject);
         terminal = &nullObject.i_Logable;
     }
-    Disk disk;
-    Disk_Init(&disk, "smell.txt", terminal);
-    ILogable* file_writer = &disk.logable;
-    int number_of_addresses = file_writer->readNumber("number of addresses");
+//    Disk disk;
+//    Disk_Init(&disk, "a.txt", terminal);
+//    ILogable* file_writer = &disk.logable;
+    int number_of_addresses = terminal->readNumber("number of addresses");
 
     Application application;
-    Application_Init(&application, number_of_addresses, file_writer);
+    Application_Init(&application, number_of_addresses, terminal);
 
     application.run();
 

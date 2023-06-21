@@ -8,7 +8,7 @@ interface ILogable
  +    const char *(*readString)();
 }
 
-Application  --* AddressManagement
+Application  *-- AddressManagement
 ILogable <|-- Disk
 ILogable <-- Disk
 ILogable <-- Address

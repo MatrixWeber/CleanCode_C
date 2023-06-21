@@ -44,6 +44,17 @@ TEST(TestCalculatorDivision) {
     ASSERT(calc.calculate('/', first_value, second_value) == first_value / second_value, "Division failed");
 }
 
+TEST(TestCalculatorDivision2) {
+    OperationFactory factory;
+    OperationFactory_Init(&factory);
+    Calculator calc;
+    Calculator_Init(&calc, &factory.factoryable);
+    const double first_value = 2.1;
+    const double second_value = 4.2;
+    ASSERT(calc.calculate(':', first_value, second_value) == first_value / second_value, "Division failed");
+}
+
+
 TEST(TestCalculatorLastOperationValid) {
     const char operation = '/';
     OperationFactory factory;
@@ -87,6 +98,7 @@ TEST_SUITE(TestAddressManagement) {
     RUN_TEST(TestCalculatorLastOperationValid);
     RUN_TEST(TestCalculatorDivisionByZero);
     RUN_TEST(TestCalculatorInvalidOperation);
+    RUN_TEST(TestCalculatorDivision2);
 }
 
 void RunTests() { RUN_TEST_SUITE(TestAddressManagement); }

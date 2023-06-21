@@ -1,7 +1,7 @@
 @startuml
 
 
-interface IOperationFactory {
+interface IFactoryable {
 	+{abstract} create(const char operation) : IOperationable*
 }
 
@@ -70,7 +70,7 @@ class PlusOperation {
 
 /' Inheritance relationships '/
 
-IOperationFactory <|-- OperationFactory
+IFactoryable <|-- OperationFactory
 
 
 IOperationable <|-- DivideOperation
@@ -93,7 +93,7 @@ IOperationable <|-- PlusOperation
 
 /' Aggregation relationships '/
 
-Calculator -> IOperationFactory : uses
+Calculator -> IFactoryable : uses
 
 
 OperationFactory .> IOperationable : creates
