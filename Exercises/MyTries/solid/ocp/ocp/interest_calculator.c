@@ -4,9 +4,9 @@
 
 #include "interest_calculator.h"
 
-static double InterestCalculator_CalculateInterest(InterestCalculator *const self)
+static double InterestCalculator_CalculateInterest(InterestCalculator *const self, double value)
 {
-    return self->interest_rate;
+    return self->interest_rate * value;
 }
 
 void InterestCalculator_Init(InterestCalculator*const self, const double interest_rate)

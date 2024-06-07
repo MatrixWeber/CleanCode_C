@@ -32,14 +32,12 @@ double Account_Withdraw(Account *self, double amount) {
 double Account_CalculateInterest(Account *self) {
     double interest_rate = 0;
     if (self->interest_calculator) {
-        interest_rate = self->interest_calculator->calculate_interest(self->interest_calculator);
+        interest_rate = self->interest_calculator->calculate_interest(self->interest_calculator, self->balance);
     }
 
-    const double interest = self->balance * interest_rate;
-
     LogText("\nCalculate interest, amount: ");
-    LogDouble(interest);
+    LogDouble(interest_rate);
     LogText("\n");
 
-    return interest;
+    return interest_rate;
 }

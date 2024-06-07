@@ -38,9 +38,9 @@ double Account_CalculateInterest(Account *self) {
             interest_rate = 0.001;
             break;
         }
-        case kSavingsAccount:
-            interest_rate = 0.075;
-            break;
+
+        // add case saving account
+
         case kInvalid:
             break;
     }

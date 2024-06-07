@@ -9,7 +9,7 @@ typedef struct InterestCalculator InterestCalculator;
 
 struct InterestCalculator{
     double interest_rate;
-    double (*calculate_interest)(InterestCalculator *const);
+    double (*calculate_interest)(InterestCalculator*const, double);
 };
 
 void InterestCalculator_Init(InterestCalculator*const self, const double interest_rate);
