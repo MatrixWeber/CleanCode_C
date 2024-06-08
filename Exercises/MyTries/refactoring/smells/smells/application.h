@@ -10,7 +10,6 @@
 typedef struct Application Application;
 
 struct Application {
-    void (*init_this)(Application *const);
     AddressManagement address_management;
     void (*run)();
 };

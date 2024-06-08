@@ -11,6 +11,7 @@ static void AddressManagement_SetNumberOfAddresses(AddressManagement *const self
 
 void AddressManagement_Init(AddressManagement *const self,
                             const int number_of_addresses) {
+
     AddressManagement_SetNumberOfAddresses(self, number_of_addresses);
 
     for (int i = 0; i < self->number_of_addresses; ++i) {

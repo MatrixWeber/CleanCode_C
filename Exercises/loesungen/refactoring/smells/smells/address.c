@@ -21,7 +21,7 @@ void Address_Write(Address* self)
 // Zu lange Funktion
 void Address_Read(Address* self)
 {
-  // Code wiederholt sich, Einlesen eines Textes kˆnnte in ein separates File
+  // Code wiederholt sich, Einlesen eines Textes k√∂nnte in ein separates File
   // ausgelagert werden
   printf("Please enter the name: ");
   scanf("%s", self->name);
@@ -29,7 +29,7 @@ void Address_Read(Address* self)
   printf("Please enter the street: ");
   scanf("%s", self->street);
 
-  // Einlesen einer Zahl kˆnnte in ein separates File ausgelagert werden
+  // Einlesen einer Zahl k√∂nnte in ein separates File ausgelagert werden
   // Wiederholung von main()
   while (true) {
     printf("Please enter the zip code: ");
@@ -53,6 +53,6 @@ void Address_Read(Address* self)
   scanf("%s", self->city);
 }
 
-// Auch wenn es erst einmal objektorientiert aussieht, w‰re es besser die
+// Auch wenn es erst einmal objektorientiert aussieht, w√§re es besser die
 // Funktionen zum Einlesen und Ausgeben extern zu implementieren, um die
-// Abh‰ngigkeit der Datenklasse vom Ausgabemedium zu entfernen
+// Abh√§ngigkeit der Datenklasse vom Ausgabemedium zu entfernen

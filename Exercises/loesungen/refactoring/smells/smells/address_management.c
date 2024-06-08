@@ -41,8 +41,8 @@ void AddressManagement_WriteAllAddresses(AddressManagement* self)
   }
 }
 
-// es sollte das vohandene Objekt Adress übergeben werden
-// die Funktion ist überflüssig, sie ist schon in der Klasse Address enthalten
+// es sollte das vohandene Objekt Adress Ã¼bergeben werden
+// die Funktion ist Ã¼berflÃ¼ssig, sie ist schon in der Klasse Address enthalten
 void ShowAddress(const char* name, const char* street, const char* city,
                  const int zip_code)
 {

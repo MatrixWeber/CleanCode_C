@@ -21,6 +21,7 @@ int main() {
 
     Application application;
     Application_Init(&application, number_of_addresses, terminal);
+//    Application_Init(&application, number_of_addresses, file_writer);
 
     application.run();
 
